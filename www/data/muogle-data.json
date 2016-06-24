@@ -1,0 +1,442 @@
+[
+  {
+    "Id": 1,
+    "Category": "Basics",
+    "Fact": "God revealed all his messages to Prophet Muhammad word for word.",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 2,
+    "Category": "Basics",
+    "Fact": "Prophet Muhammad started receiving revelations at the age of 40.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Muhammad?s initial encounter with angel Gabriel was in the cave of Hira. Muhammad was torn from his sleep in his mountain cave and felt himself overwhelmed by a divine presence.  Later he explained this ineffable experience by saying that an angel had enveloped him in a terrifying embrace so that it felt as though the breath was being forced from his body.  The angel gave him the curt command: ?iqra!? or ?Recite!?  Muhammad protested that he could not recite; he was not a kahin, one of the ecstatic prophets of Arabia.  But, he said, the angel simply embraced him again until, just as he thought he had reached the end of his endurance, he found the divinely inspired words of a new scripture pouring forth from his mouth.",
+    "Verification": "N/A",
+    "Tags": 0
+  },
+  {
+    "Id": 3,
+    "Category": "Character",
+    "Fact": "Prophet Muhammad was sent to perfect character",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 4,
+    "Category": "Basics",
+    "Fact": "The mission of Prophet Muhammad is to complete what Prophet Ibrahim started. To restore the mission of Ibrahim.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Prophet Ibrahim prayed that people from all corners of the Earth to go to Mecca and worship. His dua was that \"We, believers, have a soft corner in our heart for the Kaaba.",
+    "Verification": "Nouman Ali Khan",
+    "Tags": 0
+  },
+  {
+    "Id": 5,
+    "Category": "Family",
+    "Fact": "Foster parents will be in the highest level of Paradise.",
+    "Type": "Hadith",
+    "Question": 0,
+    "Notes": "The status of an Orphan is ranked very high. Prophet  Muhammad himself was an one. He explains, \"I and the one who takes care of an Orphan will be as close as these two fingers (index and middle) in Paradise.",
+    "Verification": "Mufti Menk",
+    "Tags": "Household, Marriage, Family, Mother, Father, Daughter, Son, Parents, Children, Hadith"
+  },
+  {
+    "Id": 6,
+    "Category": "Basics",
+    "Fact": "Another name for Islam is the religion of Ibrahim.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 7,
+    "Category": "Women",
+    "Fact": "A working woman who is married does not have to contribute money for the household. If she does, it is considered charity.",
+    "Type": 0,
+    "Question": "Does the woman have to chip in at home?",
+    "Notes": 0,
+    "Verification": "Nouman Ali Khan",
+    "Tags": 0
+  },
+  {
+    "Id": 8,
+    "Category": "Women",
+    "Fact": "In Islam, the status of women is so high that there is a Chapter dedicated to them: Al-Nisa",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Allah is drawing our attention to the status of the woman and her rights. There is not a chapter specified for men. In this Chapter, God tells us to be conscious of women's rights. Men and women are created physically different but spiritually the same. Their path to God is equal.",
+    "Verification": "Mufti Menk",
+    "Tags": "Women, Rights, Oppression, Men, Wife, Husband, Marriage, Family, Mother, Daughter, Sister, Pregnancy, Ummah, Quran, Chapter"
+  },
+  {
+    "Id": 9,
+    "Category": "Family",
+    "Fact": "The man is the Imam of the house.",
+    "Type": 0,
+    "Question": "What is the man's religious responsibility in the house?",
+    "Notes": 0,
+    "Verification": "Nouman Ali Khan",
+    "Tags": 0
+  },
+  {
+    "Id": 10,
+    "Category": "Sex",
+    "Fact": "Sex is not permitted through the anas and during menstruation/post-maternal bleeding.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "N/A",
+    "Tags": 0
+  },
+  {
+    "Id": 11,
+    "Category": "Basics",
+    "Fact": "There are 5 pillars in Islam: Divine Oneness, Prayer, Fasting Ramadan, Charity, Hajj",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 12,
+    "Category": "Paradise",
+    "Fact": "Whoever prays 5 times a day will enter Jannah",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 13,
+    "Category": "Knowledge",
+    "Fact": "When you are in a learning setting, the angels surround you",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 14,
+    "Category": "Children",
+    "Fact": "Children are not accountable for sins before puberty",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 15,
+    "Category": "Judgment Day",
+    "Fact": "There are 10 major signs for the Day of Judgment.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 16,
+    "Category": "Judgment Day",
+    "Fact": "There are more than 50 minor signs for the Day of Judgment.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 17,
+    "Category": 0,
+    "Fact": "Abu Lahab is the only enemy described by name in the Quran in Surat al-Kawthar.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "God is consoling the prophet in this Surat al-Kawthar when his son dies and Abu Lahab makes fun of him and celebrates. God forces him to think of what he has been given, not what was taken from him. Surat al-Kawthar is the shortest Surah in the Quran.",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 18,
+    "Category": "Youth",
+    "Fact": "The people of the Cave were not prophets, they're believers who want to hold onto Islam.",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 19,
+    "Category": 0,
+    "Fact": "Allah will guide you even in your sleep when you commit yourself to him.",
+    "Type": "Quran?",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 20,
+    "Category": 0,
+    "Fact": "When young people turn to Allah, the world submits to them, the laws of nature submit to them because they submitted to Allah.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Refers to Surat al-Kahf",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 21,
+    "Category": "Adultery",
+    "Fact": "A ministers wife continuously seduced her worker, Yusuf and he would repeatedly deny her. He later became a prophet.",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": "This is the story of Prophet Yusuf who worked for the minister and lived in his house. The ministers wife is a woman of wealth and power, slowly she seduced him and made her advances to reel him in although her husband warned her to respect Yusuf's space. In this Surah, God says that Yusuf would have slipped had he not been confident in God's existence.",
+    "Verification": "NAK",
+    "Tags": "Women, Modesty, Men, Sex, Adultery, Zina, Fornication, Wife, Cheating, Quran, Prophet, Messenger, Yusuf, Joseph, Lust, Worker, Employee, Boss"
+  },
+  {
+    "Id": 22,
+    "Category": 0,
+    "Fact": "The Quran was revealed in the Arabic language",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "There was a messaged revealed to every single nation",
+    "Verification": "Yusuf Estes",
+    "Tags": 0
+  },
+  {
+    "Id": 23,
+    "Category": 0,
+    "Fact": "You are not above temptations where nothing effects you.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "An-najm:32, Allah says I know you better",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 24,
+    "Category": 0,
+    "Fact": "Free time for the believer is used to constantly work on making society better",
+    "Type": "Opinion",
+    "Question": 0,
+    "Notes": "Example: \"video games 8 hours a day",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 25,
+    "Category": 0,
+    "Fact": "The real dua to Islam is the character of a Muslim, without opening your mouth.",
+    "Type": "Opinion",
+    "Question": 0,
+    "Notes": "Whatever others see you doing, they're going to think that's Islam. They're not going to say Islam is great but that Muslims are messed up. You are an ambassador of Islam.",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 26,
+    "Category": "Ramadan",
+    "Fact": "Ramadan is the month that God softens the hearts of all of humanity, not just the believers.",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": "[Al-Baqarah 2:185]",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 27,
+    "Category": 0,
+    "Fact": "None of your good deeds are going to go wasted.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Quran",
+    "Verification": 0,
+    "Tags": 0
+  },
+  {
+    "Id": 28,
+    "Category": 0,
+    "Fact": "Prophet Muhammad was unlettered/illiterate",
+    "Type": "Quran?",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "Mufti Menk",
+    "Tags": 0
+  },
+  {
+    "Id": 29,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "You don?t act Muslim in high school in NYC",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 30,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "At that time I said fine, good times are over?these are bad times and therefore this religion has nothing to do with me now",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 31,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "Millions of Muslims used to think like this and they still think like this",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 32,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "They think thinking about Islam is thinking backwards",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 33,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "The ummah has not done a good job marketing themselves to the Muslims themselves. If a Muslim/muslimah have a negative opinion on Islam, that means we didn?t do a good job presenting Islam",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 34,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "You don't know, but you like to take things, either make them halal or make them haram. You don't have the qualifications.",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 35,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "You don't get to decide who's going to burn in hellfire and who's guided and who's misguided",
+    "Verification": "NAK",
+    "Tags": 0
+  },
+  {
+    "Id": 36,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "1 out of 3 people below 35 say they don't have a recognized religion",
+    "Verification": "Yasir Qadhi",
+    "Tags": 0
+  },
+  {
+    "Id": 37,
+    "Category": 0,
+    "Fact": "All questions are halal. Even the angels asked God questions: Why are you creating man? What is the point?",
+    "Type": "Hadith",
+    "Question": 0,
+    "Notes": "I know you're scared to ask these questions",
+    "Verification": "Yasir Qadhi",
+    "Tags": 0
+  },
+  {
+    "Id": 38,
+    "Category": 0,
+    "Fact": "Not all questions can be answered rationally, some aspects of Islam are superational. Islam is never irrational, just beyond rationality",
+    "Type": "Opinion",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "Yasir Qadhi",
+    "Tags": 0
+  },
+  {
+    "Id": 39,
+    "Category": "Inspiration",
+    "Fact": "Allah doesn't mislead the sincere, if you truly want guidance, God will give it to you.",
+    "Type": "Quran",
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "Yasir Qadhi",
+    "Tags": 0
+  },
+  {
+    "Id": 40,
+    "Category": 0,
+    "Fact": "Powerful  Quotes",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "We are living at a time of trials and tribulations. The youth are challenged. Youth have to rise to the challenge. You need to ask questions.",
+    "Verification": "Yasir Qadhi",
+    "Tags": 0
+  },
+  {
+    "Id": 41,
+    "Category": "Fitness",
+    "Fact": "Our body is Amana, we should provide the best for it",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "Mufti Menk",
+    "Tags": 0
+  },
+  {
+    "Id": 42,
+    "Category": "Money",
+    "Fact": "When you discipline yourself in spending and try to use your money wisely, you are pleasing God. (Spending properly)",
+    "Type": 0,
+    "Question": 0,
+    "Notes": 0,
+    "Verification": "Mufti Menk",
+    "Tags": 0
+  },
+  {
+    "Id": 43,
+    "Category": "Community",
+    "Fact": "Prophet Muhammad brought God?s message to his people without abolishing their culture.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "We are told in Al-Araf 7:199, \"Show forgiveness, enjoin what is good, and turn away from the foolish.\" In context, this was a message to Prophet Muhammad to indulge in the good or assets of his culture and turn away from the bad and if anyone rejected his message, to ignore them. The Quran has come to us to provide solutions in our community, not impose difficulty.",
+    "Verification": "Amr Khalid",
+    "Tags": "Fairness, justice, friend, People, parents, Children, Ummah, Community, Neighbor, Culture, Friendship, Hadith, Prophet, Messenger, Message, Muhammad"
+  },
+  {
+    "Id": 44,
+    "Category": "Equality",
+    "Fact": "God doesn't make himself exclusive to a certain kind of people.",
+    "Type": 0,
+    "Question": 0,
+    "Notes": "He is Rabul Alameen or Lord of Mankind and all existence, as mentioned in the opening verse of the Quran, and Malek An-nas, Sovereign of Mankind, concluded in the last Surah titled ?The People.? We?ve seen again and again Islam declare brotherhood and sisterhood amongst people of different races, colors and backgrounds when ideas of this sort were taboo. Prophet Muhammad portrayed this concept during his last pilgrimage: ?O People! Your God is one; your forefather (Adam) is one; an Arab has no superiority over a non-Arab nor a non-Arab has any superiority over an Arab; a white has no superiority over a black nor a black has any superiority over white except by piety and good action.?",
+    "Verification": "Amr Khalid",
+    "Tags": "Women, Men, Love, Ummah, Community, Neighbor, Culture, Fairness, Justice, Equality, Discrimination, Race, People, God, Homosexuality, Gay, Lesbian, Queer"
+  }
+]

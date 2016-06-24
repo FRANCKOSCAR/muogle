@@ -1,0 +1,617 @@
+@font-face {
+    font-family: Harabara;
+    src: url(Harabara/Harabara.woff);
+}
+
+body {
+    font-family: "Harabara", "Helvetice Neue" !important;
+}
+
+
+/* Empty. Add your own CSS if you like */
+.home {
+/*	background-image: url(../img/home-bg.jpg);*/
+	background-repeat: no-repeat;
+	background-size: 100%;
+    background-color: black;
+}
+
+.category {
+	background: #5B5B5B;
+}
+
+.category-bar {
+	background: #5B5B5B;
+	border-bottom: 1px solid #DADE53;
+}
+
+.category-item {
+	max-width: 50%;
+    font-size: 144%;
+    font-weight: bolder;
+    margin-top: 13%;
+    float:left; 
+    width:50%;
+}
+
+.button {
+	background-color: #DADE53;
+    border-radius: 48px;
+    min-height: 9px;
+    line-height: 28px;
+    font-size: 13px;
+    width: 100px;
+    color: white;
+}
+
+body > div > ion-nav-view > ion-view > ion-content > div.scroll-bar.scroll-bar-v > div {
+	background:#DADE53;
+}
+
+input[type="text"] {
+    height: inherit;
+    margin-left: 4px;
+    color:gray;
+}
+
+.homeLabel {
+    outline: none;
+    background-color: transparent;
+    border: 0px;
+    background-image: url(http://localhost:8888/Muogle/www/img/search.png);
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    background-position: center left;
+}
+
+
+.swiper-slide {
+    z-index: 9 !important;
+}
+
+
+.bar-footer {
+    background: transparent;
+}
+
+
+.position-left {
+	position: absolute;
+	left: 20px;
+}
+
+.position-center {
+width: 100%;
+text-align: center;
+
+}
+
+.position-right {
+	position: absolute;
+	right: 20px;
+    bottom: 2px;
+}
+
+.bar-footer .position-left {
+    position: absolute;
+    left: 10px;
+    margin-top: 12px;
+    height: 20px;
+    width: 20px;
+}
+
+.bar-footer .position-center {
+    width: 100%;
+    text-align: center;
+    height: 10px;
+    margin-top: 12px;
+
+}
+
+.bar-footer .position-right {
+    position: absolute;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    top: 13px;
+}
+
+.scroll{
+    height:100%;
+}
+
+.Content .scroll{
+	height:100%;
+    background: white;
+}
+
+.favorite .scroll{
+     height:100%;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+-webkit-align-items: center; 
+-ms-flex-align: center; 
+align-items: center;
+}
+
+/********************************************************************************
+*********************************** Content *************************************/
+
+.muogleCategory {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #EBEBEB;
+    color: #5B5B5B;
+    background-color: white;
+}
+
+.muogleCategory:active {
+    float: left;
+    border-bottom: 2.5px;
+    border-bottom-color: #CADA56;
+    color: #CADA56;
+}
+
+.notDisplay{
+    display:none;
+}
+
+.bar-header {
+    background: #CADA56;
+    z-index: 20;
+}
+
+.bar-subheader {
+    padding: 0px;
+    background: none;
+}
+
+.swiper-container-horizontal > .swiper-pagination {
+    display: none;
+}
+
+.slideContainer {
+    height: 86.5%;
+    overflow: visible;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    -webkit-align-items: center; 
+    -ms-flex-align: center; 
+    align-items: center;
+}
+
+.slideContainer .scroll {
+    height: 100% !important;
+}
+
+.slid {
+    height: 75%;
+    overflow: hidden;
+    margin-top: 37%;
+    background-size: cover;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+}
+
+.slideBackground {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-color: black;
+    border-radius: 25px;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+    filter: grayscale(100%) blur(2px); /* Current draft standard */
+    -webkit-filter: grayscale(100%); /* New WebKit */
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%); 
+    -o-filter: grayscale(100%); /* Not yet supported in Gecko, Opera or IE */ 
+    filter: grayscale(1) blur(3px); /* IE */
+    -webkit-filter: grayscale(1) blur(3px); /* Old WebKit */  
+}
+
+
+.sliderUp {
+    height: 60%;
+    margin-top: 10%;
+    background-color: inherit;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+}
+
+.sliderUp .slid {
+    height: 100%;
+    margin: 0;
+}
+
+.slideValiderContainer {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+    align-self: flex-end;
+    -webkit-align-self: flex-end;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+    bottom: -25px;
+    position: absolute;
+    z-index: 11;
+}
+
+.slideValider {
+    background-color: #CADA56;
+    width: 48px;
+    height: 48px;
+    border-radius: 81px;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+        -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+    transition: all 0.3s ease-out;
+}
+
+
+.slideValiderGray {
+    background-color: #5B5B5B;
+    width: 48px;
+    height: 48px;
+    border-radius: 81px;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+        -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+    transition: all 0.3s ease-out;
+}
+
+.slideValider img {
+    height: 22px;
+    width: 22px;
+}
+
+.slideValiderGray img {
+    height: 22px;
+    width: 22px;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    color: white;
+    width: 90%;
+    height: 88%;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+        -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+    font-size: 9vw;
+    text-align: center;
+    -webkit-text-align: center;
+    z-index: 12;
+    line-height: initial;
+}
+
+
+.verifier{
+    z-index: -10;
+/*    position: absolute;*/
+    top:75%;
+}
+
+.muogleVerifier {
+    float: left;
+    display: inline-block;
+    width: 58px;
+    height: 58px;
+    line-height: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 3px;
+    border-style: solid;
+    border-color: #CADA56;
+    color: #5B5B5B;
+    border-radius: 50%;
+    background-repeat: no repeat;
+    background-position: center center;
+    /*background-size:;*/
+    background-color: gainsboro;
+    margin: 3px;
+    background-size: cover;
+}
+
+
+/*********************************
+********** Tooltip ***************/
+
+.validerName {
+    margin-left : 0px;
+    opacity: 1;
+    border-radius: 35px !important;
+        border-style: solid;
+    border-color: #CADA56;
+        height: 50px !important;
+        visibility: 'hidden';
+    /*margin-top: -110px;*/
+}
+
+
+.validateurWrapper {
+    width: -webkit-max-content; width: max-content; height: max-content;
+}
+
+.popover-arrow {
+    top: 80% !important;
+}
+
+
+.popover-arrow:after {
+    top: -5px !important;
+}
+
+ion-scroll < .validateurWrapper {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+      -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+/********************************************************************************
+*********************************** Content *************************************/
+
+
+.category .bar-header {
+    background: #5B5B5B;
+    border-bottom: 1px solid #CADA56;
+}
+
+.Content .bar-footer .position-left {
+    position: absolute;
+    left: 10px;
+    margin-top: 12px;
+    height: 20px;
+    width: 20px;
+}
+
+
+.Content .bar-footer .position-center {
+    width: 100%;
+    text-align: center;
+    height: 10px;
+    margin-top: 12px;
+}
+
+.Content .bar-footer .position-right {
+    position: absolute;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    top: 13px;
+}
+
+
+
+/********************************************************************************
+*********************************** Favorite *************************************/
+
+
+.favorite .bar-header {
+    top: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+.favorite .position-left {
+    position: absolute;
+    left: 0px;
+}
+
+.favorite .position-right {
+    position: absolute;
+    right: 0px;
+}
+
+.favorite .bar-footer .position-left {
+    position: absolute;
+    left: 0px;
+}
+
+.favorite .bar-footer .position-right {
+    position: absolute;
+    right: 0px;
+}
+
+.favoriteCards {
+    height: auto;
+    width: 100%;
+    margin-top: 44px;
+}
+
+.favorite .favoriteWrapper {
+    height: 300px;
+      display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+    margin-top: 17px;
+    margin-bottom: 45px;
+}
+
+.favoriteCard {
+    height: 300px;
+    border: 3px;
+    border-style: none;
+    border-color: none;
+    color: #5B5B5B;
+    border-radius: 10%;
+    background-size: cover;
+    position: relative;
+}
+
+.favoriteCard.slid {
+    margin: 0;
+
+}
+
+.favorite .sectionCard{
+    width: 300px;
+}
+
+.favorite .child {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  color: white;
+  font-size: 9vw;
+  -webkit-text-align: center;
+}
+
+
+.favoriteCard, .cardBottom {
+    width:100%;
+}
+
+.cardBottom {
+    height: 30px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+/********************************************************************************
+*********************************** QuoteInfo *************************************/
+.quoteInfo .cardBottom {
+    height: 30px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    color: white;
+}
+
+
+.quoteInfo .bar-header{
+    top: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    height: 44px;
+}
+
+.quoteInfo .position-left {
+    position: absolute;
+    left: 10px;
+    margin-top: 12px;
+}
+
+.quoteInfo .position-right {
+    position: absolute;
+    right: 10px;
+    margin-top: 12px;
+}
+
+.quoteInfo .bar-footer .position-left {
+    position: absolute;
+    left: 10px;
+    margin-top: 12px;
+}
+
+.quoteInfo .bar-footer .position-right {
+    position: absolute;
+    right: 10px;
+    margin-top: 12px;
+}
+
+.quoteInfo .favoriteCards {
+    height: auto;
+    width: 100%;
+    margin-top: 44px;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+}
+
+.quoteInfo .favoriteWrapper {
+    height: max-content;
+    margin-top: 17px;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+    -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
+}
+
+
+
+
+.quoteInfo .sectionCard{
+    width: 300px;
+}
+
+
+.quoteInfo 
+
+
+.random .bar-header {
+    z-index: 11 !important;
+}
+

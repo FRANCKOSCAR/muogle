@@ -65,21 +65,32 @@ app.filter('favoriteFilter', function () {
 
 
 app.filter('categoryFilter', function () {  
-   return function(inputs,filterValue) {
-    if(!filterValue)
-      var output = inputs;
-    else {
+  return function(inputs,filterValue, searchContent) {
+    if(filterValue.category !== undefined && filterValue.category !== null) {
       var output = [];
       console.log(inputs);
+      console.log(filterValue.category);
       angular.forEach(inputs, function (input) {
         if (input.category !== null){
-         if (input.category.description === filterValue){
+         if (input.category.description === filterValue.category){
             output.push(input);
           }
         }
        });
-    }
       return output;
+    } else if(filterValue.tag !== undefined && filterValue.tag !== null){
+      console.log(filterValue.tag);
+      var output = [];
+      angular.forEach(inputs, function (input) {
+        angular.forEach(input.tags, function (tag) {
+          if (filterValue.tag === tag){
+            output.push(input);
+          }
+        });
+      });
+      console.log(output);
+      return output;
+    }
    };
 });
 

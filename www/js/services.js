@@ -1,5 +1,5 @@
 var services = angular.module('services',["ngStorage"]);
-services.factory('MyService', function($http){
+services.factory('Quotes', function($http){
   var quote = [];
 
   return {
@@ -23,7 +23,29 @@ services.factory('MyService', function($http){
   }
 });
 
+services.factory('Categories', function($http){
+  var quote = [];
 
+  return {
+    getCategories: function(){
+      return $http.get("http://muogle.sandbox.thinklabserver.com/api/web/categories").success(function(response){
+        return response;
+      }, function errorCallback(response) {
+        quoteErr = response;
+        console.log(response);
+        return false;
+      });
+    },
+    getCategorie: function(id){
+      for(i=0;i<quote.length;i++){
+        if(quote[i].id == id){
+          return quote[i];
+        }
+      }
+      return null;
+    }
+  }
+});
 
 services.factory ('StorageService', function ($localStorage) {
   $localStorage = $localStorage.$default({

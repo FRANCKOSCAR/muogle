@@ -1,41 +1,108 @@
 var controllers = angular.module('controllers',['services', 'ngCordova']);
 
-controllers.controller('MainCtrl', function($scope, $ionicHistory, $ionicSlideBoxDelegate, $ionicPopover, MyService, $ionicModal, $cordovaSocialSharing, $location, StorageService) {
+controllers.controller('MainCtrl', function($scope, $ionicHistory, $ionicSlideBoxDelegate, $ionicPopover, Quotes, Categories, $ionicModal, $cordovaSocialSharing, $location, StorageService) {
   getQuotes ();
+  getCategories ();
+  $scope.searchEmpty ="";
+  $scope.fact = [];
   $scope.category = [];
-  $scope.cardCategory = null;
+  $scope.card = {};
+  $scope.card.tag = "";
   $scope.factContent = null;
+  $scope.searchContent = null;
+  $scope.active = {state: -1};
+  $scope.activeValidator = {state: -1};
 
-  //Quotes filter function
-  $scope.setCardCategory = function ( category ) {
-    console.log(category.description);
-    $scope.cardCategory = category.description;
+//Quotes filter function
+$scope.setCardCategory = function ( category ) {
+  $scope.card.category = category.description;
+  $scope.active.state = category.description;
+  $scope.searchEmpty = "notNull";
+}
 
-  }
+$scope.$watch('card.tag', function() {
+      $scope.card.tag = $scope.card.tag.toLowerCase().replace(/\s+/g,'');
+});
+$scope.$watch('card.tag', function (newValue, oldValue) {
+  if(newValue === "")
+    $scope.card.tag = null;
+});
 
-  $scope.defaultChecker = function(category) {
-    if ($scope.cardCategory  == null)
-      return {
-        count : 1,
-        description :  "women",
-        icon : null,
-        id : 13,
-        text : "women",
-        title : "women"};
-    else {
-      return $scope.cardCategory;
-    }
-  }
+
+$scope.categoryViewer = function(category) {
+  $scope.card.category = category;
+  $location.path("/content");
+  $scope.active.state = category;
+  $scope.searchEmpty = "notNull";
+}
+
+
+$scope.setCardTag = function (tag){
+  $scope.card.category = null;
+  $scope.card.tag = tag;
+  $scope.active.state = "All";
+  console.log($scope.card.tag);
+  $scope.searchEmpty = $scope.card.tag;
+}
+
+$scope.searchTag = function(){
+  $scope.active.state = "All";
+  $location.path("content");
+  console.log($scope.card.tag);
+  $scope.searchEmpty = $scope.card.tag;
+}
+
+
+
+  // $scope.searchContentByTag = function(tag){
+  //   var output = [];
+  //   console.log($scope.fact);
+  //   angular.forEach($scope.fact, function (input) {
+  //     angular.forEach(input.tag, function (tagValue) {
+  //       if (tagValue === fact){
+  //         output.push(input);
+  //       }
+  //     });
+  //   });
+  //   $scope.cardCategory = fact.description;
+  //   $location.path("/content");
+  // }
+
+  // $scope.defaultChecker = function(category) {
+  //   if ($scope.cardCategory  == null)
+  //     return {
+  //       count : 1,
+  //       description :  "women",
+  //       icon : null,
+  //       id : 13,
+  //       text : "women",
+  //       title : "women"};
+  //   else {
+  //     return $scope.cardCategory;
+  //   }
+  // }
 
   function getQuotes (){
-    MyService.getQuotes().then(function(quotes){
+    Quotes.getQuotes().then(function(quotes){
         console.log(quotes.data.items);
       if (quotes !== false){
-        $scope.category =  quotes;
+        $scope.fact =  quotes;
         // StorageService.addQuotes(quotes);
-        console.log($scope.category);
+        console.log($scope.fact);
       } else {
         // $scope.category =  StorageService.getQuotes;
+        console.log("local "+$scope.fact);
+      }
+    });
+  }
+
+
+    function getCategories (){
+    Categories.getCategories().then(function(categories){
+      if (categories !== false){
+        $scope.category = categories.data;
+        console.log($scope.category);
+      } else {
         console.log("local "+$scope.category);
       }
     });
@@ -49,16 +116,21 @@ controllers.controller('MainCtrl', function($scope, $ionicHistory, $ionicSlideBo
 
 
 
+Quotes;
 
+$scope.goCategory = function(){
+  $location.path("/list");
+}
 
+$scope.backHome = function(){
+$location.path("/");
+};
 
-  MyService;
+  $scope.goBack = function(){
+  $ionicHistory.goBack();
+};
 
-  $scope.backHome = function(){
-    $ionicHistory.goBack();
-  };
-
-  $scope.options = {
+$scope.options = {
   loop: false,
   effect: 'fade',
   speed: 500,
@@ -137,22 +209,30 @@ function offset(elm) {
   _y = rawDom.getBoundingClientRect().top + scrollY;
   return { left: _x, top: _y };
 }
-  $scope.openPopover = function($event, item) {
-    $scope.popover.item = item;
-    $scope.popover.show($event);
-    console.log($scope.popover);
-    var position = offset($event.toElement),
-        popoverPosition = offset($scope.popover.modalEl);
-    if(popoverPosition.top > position.top) {
-      angular.element($scope.popover.modalEl).css({
-        'margin-top': String(position.top - popoverPosition.top - 58)+'px'
-      });
-    }
+  
+$scope.openPopover = function($event, item) {
+  $scope.popover.item = item;
+  $scope.popover.show($event);
+  console.log($scope.popover);
+  var position = offset($event.toElement),
+      popoverPosition = offset($scope.popover.modalEl);
+  if(popoverPosition.top > position.top) {
     angular.element($scope.popover.modalEl).css({
-      visibility: 'visible'
+      'margin-top': String(position.top - popoverPosition.top - 58)+'px'
     });
-    console.log('Show margin is: '+angular.element($scope.popover.modalEl).css('margin-top'));
-  };
+  } 
+
+  var muogle = document.getElementsByClassName("muogleVerifier");
+  angular.element(muogle).addClass("opacity");
+
+  $scope.activeValidator.state = item.id;
+  console.log(item.id);
+  angular.element($scope.popover.modalEl).css({
+    visibility: 'visible'
+  });
+  console.log('Show margin is: '+angular.element($scope.popover.modalEl).css('margin-top'));
+};
+
   $scope.closePopover = function() {
     $scope.popover.hide();
   };
@@ -162,6 +242,8 @@ function offset(elm) {
   });
   // Execute action on hide popover
   $scope.$on('popover.hidden', function() {
+    var muogle = document.getElementsByClassName("muogleVerifier");
+    angular.element(muogle).removeClass("opacity");
     // Execute action
     console.log('Hide margin is: '+angular.element($scope.popover.modalEl).css('margin-top'));
     angular.element($scope.popover.modalEl).css({
@@ -210,11 +292,11 @@ function offset(elm) {
 
 
 ////////////////////////////Social Sharing////////////////////////////////////
-$scope.shareNative = function() {
+$scope.shareNative = function(content) {
   console.log($cordovaSocialSharing.share);
         // $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "https://www.thepolyglotdeveloper.com");
         $cordovaSocialSharing
-    .share("This is your message", "This is your subject", "www/imagefile.png", "https://www.thepolyglotdeveloper.com") // Share via native share sheet
+    .share(content, "MUOGLE") // Share via native share sheet
     .then(function(result) {
       // Success!
     }, function(err) {
@@ -248,8 +330,8 @@ $scope.highlight = function(fact) {
 
 
 $scope.randomFct = function() {
-  console.log($scope.category.data);
-  $scope.random = $scope.category.data.items[Math.floor(Math.random()*$scope.category.data.items.length)];
+  console.log($scope.fact.data);
+  $scope.random = $scope.fact.data.items[Math.floor(Math.random()*$scope.fact.data.items.length)];
   console.log($scope.random);
   $location.path("/random");
 };
@@ -261,11 +343,11 @@ $scope.goToFavorite = function(){
 
 ////////////////////////////category favorite Page////////////////////////////////////
  $scope.isFavorite = function(fact){
-    console.log($scope.favorite.indexOf(fact.id));
-    if(fact !== undefined)
+    if(fact !== undefined){
       return $scope.favorite.indexOf(fact.id) !== -1;
-    else 
+    }else {
       return false;
+    }
  }
 
 ////////////////////////////category favorite Page////////////////////////////////////

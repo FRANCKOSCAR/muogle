@@ -16,7 +16,7 @@
 
 		<!-- ionic/angularjs js -->
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+		<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 		<script src="lib/ionic-ion-swipe-cards/ionic.swipecards.js"></script>
  		<script src="lib/ngstorage/ngStorage.min.js"></script>
 
@@ -40,28 +40,38 @@
 			<ion-nav-view animation="slide-left-right"></ion-nav-view>
 	  	</div>
 	  	<script id="index.html" type="text/ng-template">
-			<ion-view class="home">
-			  	<ion-content has-header="true" scroll = "false" padding="true">
-			  		<div class="row list list-inset responsive-sm" style="background-color:transparent;">
-			  			<div class="col" style="width:82%; margin: 100% 8% 0px 10%;">
-						  	<label class="item item-input homeLabel">
-						    	<input type="text" placeholder="Search Muogle">
-						  	</label>			  				
-			  			</div>
-					</div>
-		  			<div class="row">
-		  				<div class="col-50" style="margin:0 auto; text-align:center;">
-							<a class="button" ng-click = "randomFct()">DISCOVER</a>
-						</div>
-						<div class="col-50" style="text-align:center;">
-							<a class="button" href="#/content">SEARCH</a>
-						</div>
-		  			</div>
-		  			<div class="bar bar-footer" style="    display: -ms-flexbox; display: -webkit-flex;  display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center; height: initial;">
-		  				<div style="    display: -ms-flexbox; display: -webkit-flex; display: flex;     -webkit-flex-direction: column; -ms-flex-direction: column;  flex-direction: column;" ng-click="goToFavorite()">
-						  	<div style="    display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;"><img src = img/star_filled.png height="18"></div>
-						  	<div style="float:left; color:#CADA56; font-size: 11px;">Favorites</div>
-						</div>
+			<ion-view >
+			  	<ion-content has-header="true" scroll = "false" padding="false" class="home">
+		  			<div class="bar bar-footer" keyboard-attach class="bar-assertive" style="    display: -ms-flexbox; display: -webkit-flex;  display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center; height: initial; -webkit-align-items: flex-end; align-items: flex-end;">
+				  		<div style="    display: -ms-flexbox; display: -webkit-flex;  display: flex;    display: - webkit-flex; /* Safari */  -webkit-flex-direction: column; flex-direction: column;  bottom: 0em;width:100%; ">
+				  			<div style="display: -ms-flexbox; display: -webkit-flex;  display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center; align-items:center; -webkit-align-items:center, width: 75%; height: 143px;;">
+				  				<img src="img/LOGO.png" style="width:55%; height: 83px;"/>
+				  			</div>
+					  		<div class="row list list-inset responsive-sm" style="    left: 0.8em;background-color:transparent;/* height: 8.125em; */padding-top: 0;margin:0em;">
+					  			<div class="col" style="margin:0em" >
+								  	<label class="item item-input homeLabel">
+								    	<input type="text" placeholder="What are you interested in?" ng-model="card.tag" ng-trim=false>
+								  	</label>			  				
+					  			</div>
+							</div>
+				  			<div class="rowHome" style="HEIGHT: 11.125em; background-color:transparent;padding-top:0;">
+				  				<div style="left: 1.25em;position: absolute;">
+									<a class="button" ng-click = "randomFct()">DISCOVER</a>
+								</div>
+								<div style="right: 1.25em;position: absolute;">
+									<a class="button" ng-click="searchTag()">SEARCH</a>
+								</div>
+				  			</div>
+				  			<!--<div class="rowHome" style=" margin-top: 0.5em;background-color:transparent;padding-top:0;display: -ms-flexbox; display: -webkit-flex;  display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;">
+								<div style="right:auto; left:auto">
+									<a class="button" href="#/list">CATEGORY</a>
+								</div>
+				  			</div>-->
+			  				<div style="    display: -ms-flexbox; display: -webkit-flex; display: flex;     -webkit-flex-direction: column; -ms-flex-direction: column;  flex-direction: column;" ng-click="goToFavorite()">
+							  	<div style="    display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;"><img src = img/star_filled.png height="18"></div>
+							  	<div style="float:left; color:#D9DD53; font-size: 0.6875; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;">Favorites</div>
+							</div>
+				  		</div>
 					</div>
 			  	</ion-content>
 			</ion-view>
@@ -70,46 +80,59 @@
 			<ion-view class="Content">
 			  	<ion-content has-header="true" padding="true" scroll = "false">
 			  		<div class="bar bar-header">
-							<div class = "position-center"> <img src = "img/logo_small.png" ng-click="backHome()" height="31" width="60"/></div>
-						    <div class = "position-right"> <img src = "img/search.png" ng-click="backHome()" height="20" width="20"/></div>
+			  				<a ng-click="goCategory()" class="imgButton button icon position-left"> <img  src = "img/category.png" style="height:20px; width:20px;"/></a>
+							<a ng-click="backHome()" class="imgButton button icon position-center"> <img src = "img/logo_small.png"  style="height:10px; width:45px; height:20px;"/></a>
+							<a ng-click="backHome()" class="imgButton button icon position-right"> <img src = "img/search.png" style="height:20px; width:20px;"/></a>
 					</div>
-
-					// submenu of categories in muogle it
+					<!-- submenu of categories in muogle it -->
 					<div class="bar bar-subheader">
-					  	<ion-scroll scrollbar-x="false" style="width:auto; height: auto; height: 35px; border-bottom: solid thin #ddd; min-width: 100%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
+					  	<ion-scroll scrollbar-x="false" style="width:auto; border-bottom: solid thin #ddd; min-width: 100%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
 						  	<div style="width: -webkit-max-content; width: max-content; height: max-content;">
-						  		<div class = "muogleCategory" ng-repeat = "info in category.data.items"  ng-click = setCardCategory(info.category)> {{info.category.description}}</div>
+						  		<div class = "muogleCategory" ng-click = "setCardTag(card.tag)" ng-class="{'active' : active.state == 'All'}"> All</div>
+						  		<div class = "muogleCategory" ng-repeat = "info in fact.data.items"  ng-click ="setCardCategory(info.category)" ng-class="{'active' : active.state == info.category.description}"> {{info.category.description}}</div>
 						  	</div>
 						 </ion-scroll>
 					</div>
-					// card in muogle it
+					<!-- card in muogle it-->
 					<ion-content scroll="false">
 						<ion-slides slider="data.slider">
-							<ion-slide-page ng-repeat = "info in category.data.items | categoryFilter:cardCategory">
-								<ion-content scroll = "false" class="slideContainer" ng-class = "{sliderUp: slidePosition}" >
-									<ion-content scroll="false" class = "slid">
-										<div class="slideBackground" ng-style = "{'background-image':'url({{info.backgroundImage}})'}">
+							<!--<div ng-switch on="searchEmpty" style="width: 100%;height: inherit;">-->
+					  			<div ng-show="searchEmpty==null" style=" display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-self: center;    align-self: center;     padding: 20px;   ">
+									<div style="height: 100%; padding-top: 5.3em;">
+										<div style="text-align: center;color: #D5D3D3;"> 
+											<span style= "font-size: 2.5em;font-family: Antonio_Bold;line-height: 1em;"> Nothing found for your search</span> 
+											<br/>
+											Tap the category icon to browse by category<br>
+											Or You can tap the search icon to search again
 										</div>
-							  			<p class = "child">{{info.description}}</p>
+								  	</div>
+								</div>
+								<ion-slide-page ng-repeat = "info in fact.data.items | categoryFilter:card" ng-show="searchEmpty!=null">
+									<ion-content scroll = "false" class="slideContainer" ng-class = "{sliderUp: slidePosition}">
+										<ion-content scroll="false" class = "slid">
+											<div class="slideBackground" ng-style = "{'background-image':'url({{info.backgroundImage}})'}">
+											</div>
+								  			<p class = "child">{{info.content}}</p>
+									  	</ion-content>
+								  		<div class = "slideValiderContainer" >
+								  			<div ng-class = "{slideValiderGray: slideValiderGrayValue, slideValider:!slideValiderGrayValue}" native-transitions ng-click = "slideUp($event)"><img  src="img/speakers.png"/></div>
+								  		</div>
 								  	</ion-content>
-							  		<div class = "slideValiderContainer" >
-							  			<div ng-class = "{slideValiderGray: slideValiderGrayValue, slideValider:!slideValiderGrayValue}" ng-click = "slideUp($event)"><img  src="img/speakers.png"/></div>
-							  		</div>
-							  	</ion-content>
-							  	<ion-content scroll = "false" class = "verifier">
-									<ion-scroll scrollbar-x="false" style="width:80%; height: auto; margin-left:10%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
-									  	<div class = "validateurWrapper" ng-repeat = "verifier in info.verifiers">	
-									  		<div ng-click="openPopover($event, verifier)" class = "muogleVerifier" style = "background-image: url('{{verifier.icon}}');"></div>
-									  	</div>
-									 </ion-scroll>	
-								</ion-content>	
-								<div class="bar bar-footer">
-										<div class = "position-left"> <img src = "img/arrow_previously.png" ng-click="backHome()" height="20" width="20"/></div>
-										<div class = "position-center"> <img src = "img/arrow_green_up.png" ng-click="openModal(info)" height="10" width="19"/></div>
-							    		<div class = "position-right" ng-class = "{notDisplay:!isFavorite(info)}" > <img src = "img/star_filled.png" ng-click="remove(info)" height="20" width="20"/></div>
-							    		<div class = "position-right" ng-class = "{notDisplay:isFavorite(info)}"> <img src = "img/star_grey.png" ng-click="add(info)" height="20" width="20"/></div>
-								</div>	
-							</ion-slide-page>
+								  	<ion-content scroll = "false" class = "verifier">
+										<ion-scroll scrollbar-x="false" style="width:80%; height: auto; margin-left:10%; margin-right:10%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
+						  					<div style="width: -webkit-max-content; width: max-content; height: max-content;">
+										  		<div class = "validateurWrapper muogleVerifier" ng-repeat = "verifier in info.verifiers" ng-click="openPopover($event, verifier)"  style = "background-image: url('{{verifier.icon}}');" ng-class ="{'opacityNot':activeValidator.state == verifier.id}"></div>
+											</div>
+										</ion-scroll>	
+									</ion-content>	
+									<div class="bar bar-footer">
+										<a ng-click="goBack()" class="imgButton button icon position-left"> <img src = "img/arrow_previously.png" style="height:20px; width:20px;"/></a>
+										<a ng-click="openModal(info)" class="imgButton button icon position-center"> <img src = "img/arrow_green_up.png"  style="height:10px; width:19px;"/></a>
+										<a ng-click="remove(info)" ng-if = "isFavorite(info)"  class="imgButton button icon position-right"> <img  src = "img/star_filled.png" style="height:20px; width:20px;"/></a>
+							    		<a ng-click="add(info)" ng-if = "!isFavorite(info)"   class="imgButton button icon position-right"> <img src = "img/star_grey.png" style="height:20px; width:20px;"/></a>
+									</div>	
+								</ion-slide-page>
+							</div>
 						</ion-slides>
 					</ion-content>
 			  	</ion-content>
@@ -120,32 +143,37 @@
 			  	<ion-content has-header="true" padding="true" scroll="false">
 			  		<div id ="random">
 			  			<div class="bar bar-header" >
-							<div class = "position-center"> <img src = "img/logo_small.png" ng-click="backHome()" height="31" width="60"/></div>
-						    <div class = "position-right"> <img src = "img/search.png" ng-click="backHome()" height="20" width="20"/></div>
+							<img  class = "position-center" src = "img/logo_small.png" ng-click="backHome()" height="20" width="45"/>
+						    <img class = "position-right-random" src = "img/search.png" ng-click="backHome()" height="20" width="20"/>
 						</div>
 					</div>
 					<ion-content scroll = "false" class="slideContainer" ng-class = "{sliderUp: slidePositionRandom}" >
 						<ion-content scroll="false" class = "slid">
 							<div class="slideBackground" ng-style = "{'background-image':'url({{random.backgroundImage}})'}">
 							</div>
-				  			<p class = "child">{{random.description}}</p>
+				  			<p class = "child">{{random.content}}</p>
 					  	</ion-content>
 				  		<div class = "slideValiderContainer" >
 				  			<div ng-class = "{slideValiderGray: slideValiderRandomGrayValue, slideValider:!slideValiderRandomGrayValue}" ng-click = "slideUpRandom($event)"><img  src="img/speakers.png"/></div>
 				  		</div>
 				  	</ion-content>
-				  	<ion-content class = "verifier">
-						<ion-scroll scrollbar-x="false" style="width:80%; height: auto; margin-left:10%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
-						  	<div class = "validateurWrapper" >	
-						  		<div ng-click="openPopover($event, info)" class = "muogleVerifier" style = "background-image: url('http://placehold.it/150x150');"></div>
+				  	<ion-content scroll = "false" class = "verifier">
+  						<ion-scroll scrollbar-x="false" style="width:80%; height: auto; margin-left:10%; margin-right:10%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
+		  					<div style="width: -webkit-max-content; width: max-content; height: max-content;">
+						  		<div class = "validateurWrapper muogleVerifier" ng-repeat = "verifier in random.verifiers" ng-click="openPopover($event, verifier)"  style = "background-image: url('{{verifier.icon}}');" ng-class ="{'opacityNot':activeValidator.state == verifier.id}">
+							</div>
+						</ion-scroll>	
+						<!--<ion-scroll scrollbar-x="false" style="width:80%; height: auto; margin-left:10%" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
+						  	<div class = "validateurWrapper" ng-repeat = "verifier in info.verifiers">	
+						  		<div ng-click="openPopover($event, verifier)" class = "muogleVerifier" style = "background-image: url('{{verifier.icon}}');"></div>
 						  	</div>
-						 </ion-scroll>	
+						 </ion-scroll>	-->
 					</ion-content>	
 					<div class="bar bar-footer">
-						<div class = "position-left"> <img src = "img/arrow_previously.png" ng-click="backHome()" height="20" width="20"/></div>
-						<div class = "position-center"> <img src = "img/arrow_green_up.png" ng-click="openModal(random)" height="10" width="19"/></div>
-			    		<div class = "position-right" ng-class = "{notDisplay:!isFavorite(random)}" > <img src = "img/star_filled.png" ng-click="remove(random)" height="20" width="20"/></div>
-			    		<div class = "position-right" ng-class = "{notDisplay:isFavorite(random)}"> <img src = "img/star_grey.png" ng-click="add(random)" height="20" width="20"/></div>
+						<a ng-click="goBack()" class="imgButton button icon position-left"> <img src = "img/arrow_previously.png" style="height:20px; width:20px;"/></a>
+						<a ng-click="openModal(random)" class="imgButton button icon position-center"> <img src = "img/arrow_green_up.png"  style="height:10px; width:19px;"/></a>
+						<a ng-click="remove(random)" ng-if = "isFavorite(random)"  class="imgButton button icon position-right"> <img  src = "img/star_filled.png" style="height:20px; width:20px;"/></a>
+			    		<a ng-click="add(random)" ng-if = "!isFavorite(random)"   class="imgButton button icon position-right"> <img src = "img/star_grey.png" style="height:20px; width:20px;"/></a>
 					</div>	
 			  	</ion-content>
 			</ion-view>
@@ -153,17 +181,17 @@
 
 	  	<script id="list.html" type="text/ng-template">
 			<ion-view class="category">
-		  	// 	<ion-header-bar class="bar-header">
-					// <a class="button icon-left ion-home" href="#/">Go back!</a>
-			  // 		<h1 class="title">Second Page</h1>
-		  	// 	</ion-header-bar>
+		  		<!--<ion-header-bar class="bar-header">
+					<a class="button icon-left ion-home" href="#/">Go back!</a>
+			  		<h1 class="title">Second Page</h1>
+		  		</ion-header-bar>-->
 				<div class="bar bar-header">
-					<div class = "position-center"> <img src = "img/logo_small.png" ng-click="backHome()" height="31" width="60"/></div>
-				    <div class = "position-right"> <img src = "img/search.png" ng-click="backHome()" height="20" width="20"/></div>
+					<div class = "position-center"> <img src = "img/logo_small.png" ng-click="backHome()" height="20" width="45"/></div>
+				    <div class = "position-right-category"> <img src = "img/search.png" ng-click="backHome()" height="20" width="20"/></div>
 				</div>
-	  			<ion-content has-header="true" padding="true" >
-				  		<div class="category-item" ng-repeat = "info in category.data.items">
-				  			{{info.category.description}}
+	  			<ion-content has-header="true" padding="true" style="padding-top: 3.15em;">
+				  		<div class="category-item" ng-repeat = "info in category.items" ng-class="{'categoryNotActive': info.count == 0}" ng-click="categoryViewer(info.description)">
+				  			{{info.description}}
 				  		</div>
 		  		</ion-content>
 			</ion-view>
@@ -171,27 +199,27 @@
 	  	<script id="favorite.html" type="text/ng-template">
 			<ion-view class="favorite">
 		  		<div class="bar bar-header">
-						<div class = "position-center"> <img src = "img/logo_small.png" ng-click="backHome()" height="31" width="60"/></div>
+						<img  class = "position-center" src = "img/logo_small.png" ng-click="backHome()" height="20" width="45"/>
 				</div>
-			  	<ion-content class = "favoriteCards" scroll="true" >
-			  		<div ng-switch on="favorite.length" style="width: 100%;">
-			  			<div ng-switch-when="0">
+			  	<ion-content class = "favoriteCards" scroll="true" style="padding-top: 4.62em;">
+			  		<div ng-switch on="favorite.length" style="width: 100%;height: inherit;display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-self: center;    align-self: center;">
+			  			<div ng-switch-when="0" style="display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-self: center;    align-self: center;     padding: 20px;   ">
 						  	<div >
 								<div style="display: -ms-flexbox; display: -webkit-flex; display: flex;-webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;"> <img src = "img/favorite_inctruction.png" height="148";/></div>
-								<div style="text-align: center;color: #D5D3D3;"> <span style= "font-size:40px"> Your favorites are empty</span> <br/>You can add any interesting post<br/>by following instruction above</div>
+								<div style="text-align: center;color: #D5D3D3;"> <span style= "font-size: 2.5em;font-family: Antonio_Bold;line-height: 1em;"> Your favorites are empty</span> <br/>You can add any interesting post<br/>by following instruction above</div>
 						  	</div>
 						</div>
-						<div ng-switch-default>
-							<div class="favoriteWrapper" ng-repeat = "info in category.data.items | favoriteFilter : favorite">
+						<div ng-switch-default style="  width: 100%; ">
+							<div class="favoriteWrapper" ng-repeat = "info in fact.data.items | favoriteFilter : favorite">
 								<div class = "sectionCard">
 									<ion-content scroll="false" class = "favoriteCard slid" ng-click = "highlight(info)">
 										<div class="slideBackground" ng-style = "{'background-image':'url({{info.backgroundImage}})'}">
 										</div>
-							  			<p class = "child">{{info.description}}</p>
+							  			<p class = "child">{{info.content}}</p>
 								  	</ion-content>
 						  			<div class = "cardBottom">
-						  				<div class = "position-left"> <img src = "img/star_filled.png" ng-click="remove(info)" height="25" width="22"/></div>
-							    		<div class = "position-right"> <img src = "img/export_grey.png" ng-click="shareNative()" height="25" width="25"/></div>
+						  				<img class = "position-left" src = "img/star_filled.png" ng-click="remove(info)" height="22" width="22"/>
+							    		<img class = "position-right" src = "img/export_grey.png" ng-click="shareNative(info.content)" height="22" width="22"/>
 						  			</div>
 						  		</div>
 						  	</div>
@@ -205,7 +233,7 @@
 				<div class="bar bar-header">
 					<div class = "position-left"> <img src = "img/star.png" ng-click="backHome()" height="20" width="20"/></div>
 					<div class = "position-center"> <img src = "img/arrow_green_down.png" ng-click="backHome()" height="12" width="30"/></div>
-				    <div class = "position-right"> <img src = "img/export.png" ng-click="backHome()" height="20" width="20"/></div>
+				    <div class = "position-right-category"> <img src = "img/export.png" ng-click="backHome()" height="20" width="20"/></div>
 				</div>
 	  			<ion-content class = "favoriteCards" has-header="true" padding="true" >
 					<div class="favoriteWrapper">
@@ -222,7 +250,7 @@
 	  	</script>
 	  	<script id="popover.html" type="text/ng-template">
 		  <ion-popover-view class = "validerName">
-		  	<ion-content scroll="false" style="height:40px; text-align: center;">
+		  	<ion-content scroll="false" style="height:2.5em; text-align: center;">
 		      {{popover.item.name}}
 		    </ion-content>
 		  </ion-popover-view>
@@ -231,24 +259,19 @@
 		<script id="my-modal.html" type="text/ng-template">
 		  <ion-modal-view class="category quoteInfo">
 		    <div class="bar bar-header">
-					<div class = "position-left" ng-class = "{notDisplay:!isFavorite(modal.cont)}" > <img src = "img/star_filled.png" ng-click="remove(modal.cont)" height="20" width="20"/></div>
-		    		<div class = "position-left" ng-class = "{notDisplay:isFavorite(modal.cont)}"> <img src = "img/star_grey.png" ng-click="add(modal.cont)" height="20" width="20"/></div>
-					<div class = "position-center"> <img src = "img/arrow_green_down.png" ng-click="closeModal()" height="12" width="30"/></div>
-				    <div class = "position-right"> <img src = "img/export.png" ng-click="shareNative()" height="20" width="20"/></div>
+		  					<a ng-click="remove(modal.cont)" ng-if = "isFavorite(modal.cont)"  class="imgButton button icon position-left"> <img  src = "img/star_filled.png" style="height:20px; width:20px;"/></a>
+				    		<a ng-click="add(modal.cont)" ng-if = "!isFavorite(modal.cont)"   class="imgButton button icon position-left"> <img src = "img/star_grey.png" style="height:20px; width:20px;"/></a>
+							<a ng-click="closeModal(modal.cont)" class="imgButton button icon position-center"> <img src = "img/arrow_green_down.png"  style="height:10px; width:19px;"/></a>
+							<a ng-click="shareNative(modal.cont.content)" class="imgButton button icon position-right"> <img src = "img/export.png" style="height:20px; width:20px;"/></a>
 				</div>
 	  			<ion-content class = "favoriteCards" has-header="true" padding="true" >
 					<div class="favoriteWrapper">
 						<div class = "sectionCard">
 				  			<div class = "favoriteCard" style = "background-image: url('{{modal.cont.fullBackgroundImage}}');">
 				  			</div>	
-				  			<div class = "cardBottom">
+				  			<div class = "cardBottom modalFont">
 
-				  			{{modal.cont.description}}<br/>
-			  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque metus risus, consectetur ut maximus gravida sit amet sem. Etiam euismod placerat tristique. Duis eros sit amet tortor congue viverra. Phasellus vulputate sit amet neque a feugiat. Donec tristique dui orci, nec elementum ex molestie ac. Vivamus tortor mi, tempus ut vulputate et, ornare sit amet leo. Nulla nulla mauris, accumsan sed feugiat venenatis nec magna.
-
-							Etiam elit urna, molestie quis dolor a, accumsan varius odio. Fusce tincidunt suscipit odio a iaculis. Morbi dignissim, nunc non lacinia luctus, eros ipsum aliquet est, sit amet vestibulum mi nulla id ipsum. Nunc ac erat facilisis, condimentum arcu quis, viverra justo. Aliquam sem lectus, scelerisque eu condimentum id, placerat eget arcu. Sed quis orci at nunc lobortis consectetur. Praesent vehiculaquam vehicula. Donec viverra a mi sed pellentesque. Phasellus id urna neque. In dapibus velit sit amet placerat malesuada. Proin vitae quam maximus, interdum nunc at, interdum nulla. Curabitur ac tristique velit. Nullam viverra scelerisque sollicitudin. Cras rutrum rhoncus mollis.
-
-							Nunc nisl porttitor, eleifend augue ut, vulputate nunc. Ut mattis porta lorem at commodo. Duis sodales tempor arcu, vel consectetur lorem convallis Sed sollicitudin elit ut justo elementum condimentum eget eu augue. Suspendisse fringilla metus ligula, sed ibus massa viverra nec. Ut urna leo, iaculis pretium risus eget, hendrerit tempus lacus. Nullam blandit ex et interdum feugiat. Praesent ac ante non urna pellentesque pellentesque ut a enim. Vivamus tempus nibh fringilla quam convallis condimentum. Curabitur vehicula euismod scelerisque. Curabitur mattis turpis a sem vestibulum, a gravida purus elementum. Quisque finibus quis odio at ornare. Morbi maximus 
+				  			{{modal.cont.notes}}
 				  			</div>
 				  		</div>
 				  	</div>

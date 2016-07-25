@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ionic','ionic.service.core','controllers', 'services', 'ngCordova']);
+var app = angular.module('myApp', ['ionic','ionic.service.core','controllers', 'services', 'ngCordova', 'ngAnimate']);
  
 
 app.run(function($ionicPlatform) {
@@ -8,6 +8,7 @@ app.run(function($ionicPlatform) {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
+      Keyboard.shrinkView(true);
 
     }
     if (window.StatusBar) {
@@ -48,7 +49,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');  
 });
  
-
+app.filter("categoryFilter", function(){
+  return function(inputs){
+    var output = [];
+    angular.forEach(inputs, function (input){
+      if (input.count>0){
+        output.push(input);
+      }
+    });
+    return output;
+  };
+});
 
 app.filter('favoriteFilter', function () {  
    return function(inputs,filterValues) {
@@ -57,40 +68,7 @@ app.filter('favoriteFilter', function () {
         if (filterValues.indexOf(input.id) !== -1)
             output.push(input);
        });
-      console.log(output);
        return output;
-   };
-});
-
-
-
-app.filter('categoryFilter', function () {  
-  return function(inputs,filterValue, searchContent) {
-    if(filterValue.category !== undefined && filterValue.category !== null) {
-      var output = [];
-      console.log(inputs);
-      console.log(filterValue.category);
-      angular.forEach(inputs, function (input) {
-        if (input.category !== null){
-         if (input.category.description === filterValue.category){
-            output.push(input);
-          }
-        }
-       });
-      return output;
-    } else if(filterValue.tag !== undefined && filterValue.tag !== null){
-      console.log(filterValue.tag);
-      var output = [];
-      angular.forEach(inputs, function (input) {
-        angular.forEach(input.tags, function (tag) {
-          if (filterValue.tag === tag){
-            output.push(input);
-          }
-        });
-      });
-      console.log(output);
-      return output;
-    }
    };
 });
 

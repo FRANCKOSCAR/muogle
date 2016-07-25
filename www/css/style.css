@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: Antonio;
     src: url(antonio/Antonio-Light.ttf);
@@ -15,8 +13,28 @@ body {
     font-family:"helvetica Neue" !important;
 }
 
+.fiftypercent{
+    height:50% !important;
+    bottom: initial !important;
+}
+
+.displayCss{
+    display: none;
+}
+
+.button {
+    border:none !important;
+}
+
 .popover-backdrop.active {
     background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.verifier {
+    position: fixed;
+    bottom: 50;
+    left: 0;
+    right: 0;
 }
 
 .opacity {
@@ -140,9 +158,14 @@ body {
 .position-right-category{
     position: absolute;
     right: 0.7em;
-    bottom: 0.89em;
+    bottom: 0.35em;
 }
 
+.position-left-category{
+    position: absolute;
+    left: 0.7em;
+    bottom: 0.35em;
+}
 
 .position-right-random{
     position: absolute;
@@ -188,6 +211,10 @@ body {
 .rowHome{
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
+    justify-content:space-between;
+    -webkit-justify-content:space-between;
+    width: 100%
+
 }
 
 
@@ -215,10 +242,10 @@ a.button {
     align-items: center !important;
     -webkit-justify-content: center !important;
     -webkit-justify-content: center !important;
-    width: 7.625em;
-    height: 1.8em;
+    width: 8.505em;
+    height: 2.1em;
     font-weight: bold !important;
-        font-size: large !important;
+    font-size: 1.2em !important;
 }
 
 /* Empty. Add your own CSS if you like */
@@ -226,6 +253,7 @@ a.button {
     background-image: url(../img/BG.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
+    background-position: center center;
 }
 
 .category {
@@ -240,12 +268,13 @@ a.button {
 }
 
 .category-item {
-	max-width: 50%;
-    font-size: 144%;
+    max-width: 50%;
+    font-size: 182%;
     font-weight: bolder;
-    margin-top: 8%;
-    float:left; 
-    width:50%;
+    margin-top: 10%;
+    float: left;
+    width: 50%;
+    padding-left: 8%;
 }
 
 .categoryNotActive{
@@ -261,7 +290,7 @@ a.button {
 
 
 .button {
-	background-color: #DADE53;
+	background-color: #D0DF61;
     border-radius: 3em;
     min-height: 0.5625em;
     line-height: 1.75em;
@@ -270,21 +299,20 @@ a.button {
     color: white;
     width: 7.5em;
     height: 2.25em;
-    font-family: Antonio;
+    font-family: Antonio_Bold;
     font-size: 1.3em;
 }
 
 
 
 body > div > ion-nav-view > ion-view > ion-content > div.scroll-bar.scroll-bar-v > div {
-	background:#DADE53;
+	background: transparent;
 }
 
 input[type="text"] {
     height: inherit;
     margin-left: 0.25em;
     color:gray;
-    background: rgba(255,255,255,0.2);
     margin-right: 1.45em;
     padding: 0.5em 0em 0.5em 0.5em !important;
     font-size: 1.05em;
@@ -294,10 +322,15 @@ input[type="text"] {
     outline: none;
     background-color: transparent;
     border: 0em;
-    background-image: url(http://localhost:8888/Muogle/www/img/search.png);
+    background-image: url(../img/search.png);
     background-repeat: no-repeat;
-    background-size: 0.75em 0.75em;
+    -webkit-background-size: 16px 16px;
+     -moz-background-size: 16px 16px;
+     -o-background-size: 16px 16px;
+     background-size: 16px 16px;
     background-position: center left;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 
@@ -373,13 +406,11 @@ input[type="text"] {
 
 .Content .scroll{
 	height:100%;
-    background: white;
+    background-color: transparent;
 }
 
 .favorite .scroll{
     height:100%;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -390,6 +421,31 @@ input[type="text"] {
 
 /********************************************************************************
 *********************************** Content *************************************/
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+  transition:0.5s ease-in all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-leave {
+  transition:0.1s linear all;
+  opacity:1;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+
 
 .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader) {
     height: 64px;
@@ -412,14 +468,18 @@ input[type="text"] {
     align-self: center;
     -webkit-justify-content: flex-start;
     justify-content: flex-start;*/
-    width: 3em !important;
-    height: 1.8em !important;
+    width: auto !important;
+    height: auto !important;
     min-width: none;
     min-height: none;
     top: 0px;
     left: -15px;
     bottom: 0px;
+    padding-left: 27px;
 }
+
+
+
 
 .Content .position-center {
 /*    -webkit-align-self: center;
@@ -428,26 +488,23 @@ input[type="text"] {
     justify-content: center;
     display: flex;*/
     display: -webkit-flex;
-    width: 3em !important;
-    height: 1.8em !important;
+    width: auto !important;
+    height: auto !important;
     min-width: none;
     min-height: none;
 }
 
 
 .Content .position-right {
-/*    -webkit-align-self: center;
-    align-self: center;
-    -webkit-justify-content: flex-end;
-    justify-content: flex-end;*/
-    width: 3em !important;
-    height: 1.8em !important;
+    width: auto !important;
+    height: auto !important;
     min-width: none;
     min-height: none;
     position: relative !important;
     top: 0px !important;
     right: -15px !important;
     bottom: 0px !important;
+    padding-right: 27px;
 }
 
 
@@ -456,14 +513,13 @@ input[type="text"] {
 .muogleCategory {
     float: left;
     height: 44px;
-    line-height: 2.1875em;
     padding-left: 0.9em;
     padding-right: 0.9em;
     border-bottom: 0.0625em;
     border-bottom-color: #EBEBEB;
     color: #5B5B5B;
     background-color: white;
-    font-size: medium;
+    font-size: 14px;
     padding-bottom: auto;
     /* padding-top: 0.25em; */
     display: flex;
@@ -515,10 +571,12 @@ input[type="text"] {
     margin-left: 1.25em;
     margin-right: 1.25em;
     position: absolute;
-    transition: all 0.3s ease-out;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-transition: -webkit-transform 0.3s linear;
+    transition: transform 0.3s linear;
     z-index: 10;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -528,7 +586,8 @@ input[type="text"] {
 }
 
 .slid {
-    height: 75%;
+    width: 100%;
+    height: 76%;
     overflow: hidden;
     margin-top: 37%;
     background-size: cover;
@@ -537,8 +596,6 @@ input[type="text"] {
     margin-right: 1.25em;*/
     position: absolute;
     z-index: 10;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -547,11 +604,16 @@ input[type="text"] {
 
 
 .sliderUp {
-    top: -26%;
+    backface-visibility: hidden;
+    perspective: 1000;
     background-color: inherit;
     border-radius: 1.5625em;
     position: absolute;
     z-index: 10;
+    -webkit-transform: translate3d(0,-9%,0);
+    transform: translate3d(0,-9%,0);
+    -webkit-transition: -webkit-transform 0.3s linear;
+    transition: transform 0.3s linear;
 }
 
 .slideContainer .scroll {
@@ -564,11 +626,8 @@ input[type="text"] {
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-color: black;
-    transition: top 0.3s ease-out;
+    background-color: #5B5B5B;    
     z-index: 10;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -590,15 +649,13 @@ input[type="text"] {
     width: 100%;
     max-width: 100%;
     max-height: 100%;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
     align-self: flex-end;
     -webkit-align-self: flex-end;
     -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
-    bottom: -4px;
+    bottom: -14.5px;
     position: absolute;
     z-index: 11;
 }
@@ -607,43 +664,38 @@ input[type="text"] {
 
 .slideValider {
     background-color: #D9DD53;
-    width: 3em;
-    height: 3em;
+    width: 54px;
+    height: 54px;
     border-radius: 5.0625em;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
     -webkit-align-items: center; -ms-flex-align: center; align-items: center;
     -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
-    transition: all 0.3s ease-out;
+    transition: background-color 0.3s linear;
 }
 
 
 .slideValiderGray {
     background-color: #5B5B5B;
-    width: 3em;
-    height: 3em;
-    border-radius: 5.0625em;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    width: 54px;
+    height: 54px;    border-radius: 5.0625em;
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
     -webkit-align-items: center; -ms-flex-align: center; align-items: center;
     -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;
-    transition: all 0.3s ease-out;
+    transition: background-color 0.3s linear;
 }
 
 .slideValider img {
-    height: 1.375em;
-    width: 1.375em;
+    height: 26.25px;
+    width: 26.25px;
 }
 
 .slideValiderGray img {
-    height: 1.375em;
-    width: 1.375em;
+    height: 26.25px;
+    width: 26.25px;
 }
 
 .child {
@@ -655,8 +707,6 @@ input[type="text"] {
     color: white;
     width: 90%;
     height: 88%;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -670,14 +720,14 @@ input[type="text"] {
 
 
 .verifier{
-    z-index: -10;
+    z-index: 1;
 /*    position: absolute;*/
-    top:75%;
+    top: 82%;
 }
 
 
 .verifier .scroll{
-    height: 4em;
+    height: 56px;
     width: max-content;
     width: -webkit-max-content;
 }
@@ -685,8 +735,8 @@ input[type="text"] {
 .muogleVerifier {
     float: left;
     display: inline-block;
-    width: 3.625em;
-    height: 3.625em;
+    width: 56px;
+    height: 56px;
     line-height: 2.1875em;
     padding-left: 0.3125em;
     padding-right: 0.3125em;
@@ -699,7 +749,7 @@ input[type="text"] {
     background-position: center center;
     /*background-size:;*/
     background-color: gainsboro;
-    margin: 0.1875em;
+    margin: 0.2875em;
     background-size: cover;
 }
 
@@ -731,8 +781,12 @@ input[type="text"] {
     border-radius: 2.1875em !important;
     border-style: solid;
     border-color: #CADA56;
-    height: 3.125em !important;
+    height: inherit !important;
     visibility: 'hidden';
+    width: inherit !important;
+    padding: 8px 26px!important;
+    margin-top: -109.984px !important;
+
     /*margin-top: -110px;*/
 }
 
@@ -751,8 +805,6 @@ input[type="text"] {
 }
 
 ion-scroll < .validateurWrapper {
-    display: -webkit-box; 
-    display: -moz-box;         
     display: -ms-flexbox;   
     display: -webkit-flex;     
     display: flex;
@@ -839,9 +891,8 @@ ion-scroll < .validateurWrapper {
     width: 100%;
 }
 
+
 .favorite .favoriteWrapper {
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -851,6 +902,16 @@ ion-scroll < .validateurWrapper {
     padding: 1.25em;
     height: 21.2em;
 }
+
+.position-left-favorite {
+    -webkit-align-self: center;
+    align-self: center;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    left: -46px;
+    position: absolute;
+}
+
 
 .favoriteCard {
     height: 18.75em;
@@ -951,8 +1012,6 @@ ion-scroll < .validateurWrapper {
     height: auto;
     width: 100%;
     margin-top: 2.75em;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
@@ -962,8 +1021,6 @@ ion-scroll < .validateurWrapper {
 .quoteInfo .favoriteWrapper {
     height: max-content;
     margin-top: 16px;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;

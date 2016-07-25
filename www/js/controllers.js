@@ -1,94 +1,164 @@
-var controllers = angular.module('controllers',['services', 'ngCordova']);
+var controllers = angular.module('controllers',['services', 'ngCordova', 'ngAnimate']);
 
-controllers.controller('MainCtrl', function($scope, $ionicHistory, $ionicSlideBoxDelegate, $ionicPopover, Quotes, Categories, $ionicModal, $cordovaSocialSharing, $location, StorageService) {
+controllers.controller('MainCtrl', function($scope, $ionicHistory, $ionicSlideBoxDelegate, $ionicPopover, Quotes, Categories, $ionicModal, $cordovaSocialSharing, $location, StorageService, $ionicScrollDelegate) {
   getQuotes ();
   getCategories ();
+  $scope.info =[];
+  $scope.searchWrong ="";
   $scope.searchEmpty ="";
   $scope.fact = [];
+  $scope.subCategory = [];
+  $scope.subCategoryTitle = [];
   $scope.category = [];
-  $scope.card = {};
-  $scope.card.tag = "";
+  $scope.card = {
+    all: false,
+    tag: ""
+  };
   $scope.factContent = null;
   $scope.searchContent = null;
   $scope.active = {state: -1};
   $scope.activeValidator = {state: -1};
+  $scope.facts = [];
+  $scope.hasPopoverBackdropListener =false;
+  $scope.verifierScrollLeft = 0;
+  $scope.activeIndex = 0;
 
-//Quotes filter function
-$scope.setCardCategory = function ( category ) {
-  $scope.card.category = category.description;
-  $scope.active.state = category.description;
-  $scope.searchEmpty = "notNull";
-}
+
 
 $scope.$watch('card.tag', function() {
-      $scope.card.tag = $scope.card.tag.toLowerCase().replace(/\s+/g,'');
+  if($scope.card.tag){
+      $scope.card.tag = $scope.card.tag.toLowerCase();
+  }
 });
 $scope.$watch('card.tag', function (newValue, oldValue) {
   if(newValue === "")
     $scope.card.tag = null;
 });
 
-
-$scope.categoryViewer = function(category) {
-  $scope.card.category = category;
+$scope.favoriteViewer = function(id) {
+  console.log(id);
+  $scope.card.category = null;
+  $scope.card.id = id;
+  $scope.searchEmpty = $scope.card.id;
+  $scope.card.all = false;
+  $scope.filterFacts();
+  $scope.active.state = "null";
   $location.path("/content");
-  $scope.active.state = category;
-  $scope.searchEmpty = "notNull";
+  $scope.closeFavorite();
 }
 
 
-$scope.setCardTag = function (tag){
-  $scope.card.category = null;
-  $scope.card.tag = tag;
+$scope.categoryViewer = function(category) {
+  $scope.resetState();
+  $scope.card.category = category.description;
+  $scope.card.all = false;
+  $scope.filterFacts();
+  if($scope.slider ) {
+    console.log($scope.slider);
+    $location.path("/content");
+    // $scope.slider.slideTo(0);
+    setCurrentFavorite(0);
+  } else {
+    $location.path("/content");
+  }
+  $scope.active.state = category.description;
+  $scope.searchEmpty = "notNull";
+  $ionicScrollDelegate.$getByHandle('categoryScroll').anchorScroll();
+}
+
+//Quotes filter function
+$scope.setCardCategory = function ( category ) {
+  $scope.resetState();
+  if ( $scope.slider ){
+    $scope.slider.slideTo(0);
+    setCurrentFavorite($scope.slider.activeIndex);
+  }
+  $scope.bool = false;
+  $scope.slidePosition = false;
+  $scope.slideValiderGrayValue =false;
+  $scope.card.category = category.description;
+  $scope.active.state = category.description;
+  $scope.searchEmpty = "notNull";
+  $scope.card.all = false;
+  $scope.filterFacts();
+}
+
+function getOffset( el ) {
+    var _x = 0;
+    var _y = 0;
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+        _x += el.offsetLeft - el.scrollLeft;
+        _y += el.offsetTop - el.scrollTop;
+        el = el.offsetParent;
+    }
+    return { top: _y, left: _x };
+}
+
+
+$scope.setCard = function (card){
+  $scope.resetState();
+  if ( $scope.slider ){
+    $scope.slider.slideTo(0);
+    setCurrentFavorite($scope.slider.activeIndex);
+  }
+  $scope.bool = false;
+  $scope.slidePosition = false;
+  $scope.slideValiderGrayValue = false;
+  $scope.card.all = true;
   $scope.active.state = "All";
-  console.log($scope.card.tag);
-  $scope.searchEmpty = $scope.card.tag;
+  $scope.searchEmpty = "notNull";
+  $scope.filterFacts();
+  console.log($ionicScrollDelegate.$getByHandle('categoryScroll'));
 }
 
 $scope.searchTag = function(){
-  $scope.active.state = "All";
-  $location.path("content");
+  $scope.resetState();
+  $scope.bool = false;
+  $scope.slidePosition = false;
+  $scope.slideValiderGrayValue = false;
+  $scope.info = null;
+  $scope.searchEmpty = null;
+  $scope.fact.data.items.forEach(function(item, index){
+    item.tags.forEach(function(element, indexEl){
+    if ($scope.card.tag === element){
+      $scope.searchEmpty = "notNull";
+      console.log("notNull");
+    }
+    });
+  });
   console.log($scope.card.tag);
-  $scope.searchEmpty = $scope.card.tag;
+  $scope.card.category=null;
+  $scope.card.id=null;
+  $scope.card.all = false;
+  $scope.active.state = "null";
+  $scope.filterFacts();
+  if ( $scope.slider && $scope.searchEmpty!=null){
+    console.log($scope.facts);
+    console.log($scope.slider);
+    $location.path("/content");
+    setCurrentFavorite($scope.slider.activeIndex);
+  } else {
+  $location.path("/content");
+  }
 }
 
 
 
-  // $scope.searchContentByTag = function(tag){
-  //   var output = [];
-  //   console.log($scope.fact);
-  //   angular.forEach($scope.fact, function (input) {
-  //     angular.forEach(input.tag, function (tagValue) {
-  //       if (tagValue === fact){
-  //         output.push(input);
-  //       }
-  //     });
-  //   });
-  //   $scope.cardCategory = fact.description;
-  //   $location.path("/content");
-  // }
-
-  // $scope.defaultChecker = function(category) {
-  //   if ($scope.cardCategory  == null)
-  //     return {
-  //       count : 1,
-  //       description :  "women",
-  //       icon : null,
-  //       id : 13,
-  //       text : "women",
-  //       title : "women"};
-  //   else {
-  //     return $scope.cardCategory;
-  //   }
-  // }
-
   function getQuotes (){
     Quotes.getQuotes().then(function(quotes){
-        console.log(quotes.data.items);
       if (quotes !== false){
         $scope.fact =  quotes;
+        quotes.data.items.forEach(function(item, index){
+          if(item.category){
+            if($scope.subCategoryTitle.indexOf(item.category.title)== -1){
+              $scope.subCategoryTitle.push(item.category.title);
+              $scope.subCategory.push(item);
+            }
+          }
+        });
         // StorageService.addQuotes(quotes);
         console.log($scope.fact);
+        console.log($scope.subCategory);
       } else {
         // $scope.category =  StorageService.getQuotes;
         console.log("local "+$scope.fact);
@@ -111,8 +181,51 @@ $scope.searchTag = function(){
 
 
 
+  $scope.filterFacts = function (searchContent) {
+    var inputs = $scope.fact.data.items;
+        filterValue = $scope.card;
+    if (filterValue.all === false){
+      if(filterValue.category !== undefined && filterValue.category !== null) {
+      console.log("all fitering");
+        var output = [];
+        angular.forEach(inputs, function (input) {
+          if (input.category !== null){
+           if (input.category.description === filterValue.category){
+              output.push(input);
+            }
+          }
+         });
+        $scope.facts = output;
+      } else {
+        if(filterValue.id !== undefined && filterValue.id !== null) {
+      console.log("id fitering");
+        var output = [];
+        angular.forEach(inputs, function (input) {
+          console.log(input);
+          if (input.id === filterValue.id){
+            output.push(input);
+          }
+         });
+        $scope.facts = output;
+        } else if(filterValue.tag !== undefined && filterValue.tag !== null){
+      console.log("tag fitering");
+          var output = [];
+          angular.forEach(inputs, function (input) {
+            angular.forEach(input.tags, function (tag) {
+              if (filterValue.tag === tag){
+                output.push(input);
+              }
+            });
+          });
+          $scope.facts = output;
+        }
+      }
 
-
+    }else {
+      $scope.facts = inputs;
+    }
+    setCurrentFavorite(0);
+  }
 
 
 
@@ -120,6 +233,11 @@ Quotes;
 
 $scope.goCategory = function(){
   $location.path("/list");
+}
+
+$scope.goCategoryFromFavorite = function(){
+  $location.path("/list");
+  $scope.closeFavorite();
 }
 
 $scope.backHome = function(){
@@ -141,17 +259,6 @@ $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
   $scope.slider = data.slider;
 });
 
-  // function getCat(){
-  //   var dd = getData();
-  //   var edd;
-  //   angular.forEach(dd, function(value,key){
-  //     edd.push(value.Category);
-  //   });
-  //   var edd = MyService.getQuotes();
-  //   console.log(edd);
-  // }
-
-  // MyService.getQuotes();
 
 $scope.datta = [];
 
@@ -165,14 +272,20 @@ $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
   $scope.previousIndex = data.slider.previousIndex;
 });
 
-
+  $scope.bool = false;
   $scope.slideValiderGrayValue = false;
+  $scope.bool = false;
   $scope.slidePosition = false;
   $scope.slideEnable = true;
-  $scope.slideUp = function() {
+  $scope.slideUp = function($event, info) {
+      $scope.info = info;
+      console.log($event);
+      console.log($scope);
       $scope.slideValiderGrayValue = !$scope.slideValiderGrayValue;
       $scope.slidePosition = !$scope.slidePosition;
       $scope.slideEnable = !$scope.slideEnable;
+      $scope.bool = !$scope.bool;
+      console.log($scope.bool);
       if ($scope.slideEnable === false){
         $scope.slider.lockSwipes();
       } else {
@@ -209,10 +322,28 @@ function offset(elm) {
   _y = rawDom.getBoundingClientRect().top + scrollY;
   return { left: _x, top: _y };
 }
-  
+
+
+
+
 $scope.openPopover = function($event, item) {
+  var $verifiers = angular.element(document.getElementsByClassName('verifier'));
+
+  console.log($scope.popover);
   $scope.popover.item = item;
-  $scope.popover.show($event);
+  var popoverWrapper = document.getElementsByClassName('popover-wrapper');
+  console.log(popoverWrapper[0]);
+
+  if ($scope.popover.isShown) {
+    if ($verifiers[0].parentNode.id !== "verifierContainer"){
+      $scope.popover.show($event); 
+    } else{
+      $scope.popover.show($event); 
+      var $verifiers = angular.element(document.getElementsByClassName('verifier'));
+      angular.element(document.getElementsByClassName('popover-wrapper')).append($verifiers);
+    }
+  }
+
   console.log($scope.popover);
   var position = offset($event.toElement),
       popoverPosition = offset($scope.popover.modalEl);
@@ -230,22 +361,58 @@ $scope.openPopover = function($event, item) {
   angular.element($scope.popover.modalEl).css({
     visibility: 'visible'
   });
-  console.log('Show margin is: '+angular.element($scope.popover.modalEl).css('margin-top'));
+
+  if (!$scope.hasPopoverBackdropListener){
+    //event listener for click on popover wrapper
+    var backdrop = document.querySelector(".popover-backdrop.active");
+    if (backdrop){
+      var eventTesteur = backdrop.addEventListener("click", function(event){
+          if (event.target.className == "popover-backdrop active"){
+            $scope.closePopover();
+          }
+      });
+      $scope.hasPopoverBackdropListener =true;
+    }
+  }
 };
 
-  $scope.closePopover = function() {
+$scope.resetState = function () {
+  $scope.verifierScrollLeft = 0;
+}
+
+$scope.shouldClosePopover = function(event){
+  var distance = $scope.verifierScrollLeft - event.detail.scrollLeft;
+  console.log("Distance between verifer and scroll position is: "+distance);
+  if (distance != 0){
+    $scope.closePopover();
+  }
+  $scope.verifierScrollLeft = event.detail.scrollLeft;
+}
+
+
+$scope.closePopover = function() {
+  if ($scope.popover.isShown){
     $scope.popover.hide();
-  };
+    console.log("closePopover");
+  }
+};
+
+
+
   //Cleanup the popover when we're done with it!
   $scope.$on('$destroy', function() {
     $scope.popover.remove();
   });
   // Execute action on hide popover
   $scope.$on('popover.hidden', function() {
+
+    var $verifiers = angular.element(document.getElementsByClassName('verifier'));
+    var $replacePopover = document.getElementById("verifierContainer");
+    angular.element($replacePopover).append($verifiers);
+
     var muogle = document.getElementsByClassName("muogleVerifier");
     angular.element(muogle).removeClass("opacity");
     // Execute action
-    console.log('Hide margin is: '+angular.element($scope.popover.modalEl).css('margin-top'));
     angular.element($scope.popover.modalEl).css({
       //'margin-top': String(position.top - popoverPosition.top - 58)+'px',
       visibility: 'hidden'
@@ -267,33 +434,36 @@ $scope.openPopover = function($event, item) {
     $scope.modal = modal;
     $scope.modal.cont = {};
   });
-  $scope.openModal = function(item) {
-    $scope.modal.cont = item;
+  $scope.openModal = function() {
+    setCurrentIndex($scope.slider.activeIndex);
+    $scope.modal.cont = $scope.info;
     $scope.modal.show();
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
-//   // Cleanup the modal when we're done with it!
-//   $scope.$on('$destroy', function() {
-//     $scope.modal.remove();
-//   });
-//   // Execute action on hide modal
-//   $scope.$on('modal.hidden', function() {
-//     // Execute action
-//   });
-//   // Execute action on remove modal
-//   $scope.$on('modal.removed', function() {
-//     // Execute action
-//   });
-// });
+
+  $ionicModal.fromTemplateUrl('favorite.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal2 = modal;
+    $scope.modal2.cont = {};
+  });
+  $scope.openFavorite = function() {
+    $scope.modal2.show();
+  };
+  $scope.closeFavorite = function() {
+    $scope.modal2.hide();
+  };
+
+
 ////////////////////////////Ionic Modal////////////////////////////////////
 
 
 
 ////////////////////////////Social Sharing////////////////////////////////////
 $scope.shareNative = function(content) {
-  console.log($cordovaSocialSharing.share);
         // $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "https://www.thepolyglotdeveloper.com");
         $cordovaSocialSharing
     .share(content, "MUOGLE") // Share via native share sheet
@@ -307,14 +477,23 @@ $scope.shareNative = function(content) {
 
 ////////////////////////////Local Storage////////////////////////////////////
 $scope.favorite = StorageService.getAll();
-  $scope.add = function (newFavorite) {
-    if ($scope.favorite.indexOf(newFavorite.id) === -1){
-      StorageService.add(newFavorite.id);
+  $scope.add = function (newFavorite) {    
+    console.log('adding favorite')
+    setCurrentFavorite($scope.slider.activeIndex);
+    if ($scope.favorite.indexOf($scope.info.id) === -1){
+      StorageService.add($scope.info.id);
+      setCurrentFavorite($scope.slider.activeIndex);
     }
   };
   $scope.remove = function (favorite) {
-    if ($scope.favorite.indexOf(favorite.id) !== -1){
+    if (favorite){
       StorageService.remove(favorite.id);
+    }
+    console.log("removing favorite");
+    setCurrentFavorite($scope.slider.activeIndex);
+    if ($scope.favorite.indexOf($scope.info.id) !== -1){
+      StorageService.remove($scope.info.id);
+      setCurrentFavorite($scope.slider.activeIndex);
     }
   };
 ////////////////////////////Local Storage////////////////////////////////////
@@ -341,19 +520,43 @@ $scope.goToFavorite = function(){
   $location.path("/favorite");
 }
 
-////////////////////////////category favorite Page////////////////////////////////////
- $scope.isFavorite = function(fact){
-    if(fact !== undefined){
-      return $scope.favorite.indexOf(fact.id) !== -1;
-    }else {
-      return false;
-    }
- }
+function setCurrentIndex(index){
+  if ($scope.facts.length > 0){  
+    $scope.info = $scope.facts[index];
+  }
+}
 
-////////////////////////////category favorite Page////////////////////////////////////
+function setCurrentFavorite(index){
+    setCurrentIndex(index);
+    //setting the landing fact favorite status
+  if ($scope.info){
+    $scope.info.isFavorited = $scope.favorite.indexOf($scope.info.id) !== -1;
+    $scope.isFavorited = $scope.info.isFavorited;
+    console.log($scope.isFavorited);
+  }
+}
+
+$scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+  console.log($scope.slider);
+  console.log(data);
+  setCurrentFavorite(data.slider.activeIndex);
+  $scope.$apply();
+  console.log($scope.isFavorited);
+});
 
 
 
+////////////////////////////keyboard////////////////////////////////////
+
+window.addEventListener('native.keyboardshow', function(){
+  angular.element(document.querySelector("#footer")).addClass("fiftypercent");
+});
+
+window.addEventListener('native.keyboardhide', function(){
+  angular.element(document.querySelector("#footer")).removeClass("fiftypercent");
+});
+
+////////////////////////////Keyboard////////////////////////////////////
 
 
  

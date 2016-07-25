@@ -115,18 +115,14 @@ $scope.searchTag = function(){
   $scope.slideValiderGrayValue = false;
   $scope.info = null;
   $scope.searchEmpty = null;
-  $scope.fact.data.items.forEach(function(item, index){
-    item.tags.forEach(function(element, indexEl){
-    if ($scope.card.tag === element){
-      $scope.searchEmpty = "notNull";
-    }
-    });
-  });
   $scope.card.category=null;
   $scope.card.id=null;
   $scope.card.all = false;
   $scope.active.state = "null";
   $scope.filterFacts();
+  if($scope.facts.length) {
+    $scope.searchEmpty = "notNull";
+  }
   if ( $scope.slider && $scope.searchEmpty!=null){
     $location.path("/content");
     setCurrentFavorite($scope.slider.activeIndex);
@@ -168,6 +164,7 @@ $scope.searchTag = function(){
   $scope.filterFacts = function (searchContent) {
     var inputs = $scope.fact.data.items;
         filterValue = $scope.card;
+        $scope.facts = [];
     if (filterValue.all === false){
       if(filterValue.category !== undefined && filterValue.category !== null) {
         var output = [];
@@ -189,14 +186,18 @@ $scope.searchTag = function(){
          });
         $scope.facts = output;
         } else if(filterValue.tag !== undefined && filterValue.tag !== null){
-          var output = [];
+          var output = [],
+            ids = [];
           angular.forEach(inputs, function (input) {
             angular.forEach(input.tags, function (tag) {
-              if (filterValue.tag === tag){
+              if (filterValue.tag.indexOf(tag.toLowerCase()) !== -1 && ids.indexOf(input.id) === -1) {
                 output.push(input);
+                ids.push(input.id);
               }
             });
           });
+          console.log($scope.card);
+          console.log(output);
           $scope.facts = output;
         }
       }
@@ -433,7 +434,7 @@ $scope.closePopover = function() {
 $scope.shareNative = function(content) {
         // $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "https://www.thepolyglotdeveloper.com");
         $cordovaSocialSharing
-    .share(content, "MUOGLE") // Share via native share sheet
+    .share(content+' Download now #MuogleApp', "MUOGLE") // Share via native share sheet
     .then(function(result) {
       // Success!
     }, function(err) {

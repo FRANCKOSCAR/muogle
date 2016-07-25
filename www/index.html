@@ -69,7 +69,7 @@
 				  			</div>-->
 			  				<div style="display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;justify-content: flex-end;-webkit-justify-content: flex-end;/* align-self: flex-end; *//* -webkit-align-self: flex-end; */height: 20%;padding-bottom: 20px;" ng-click="openFavorite()">
 							  	<div style="    display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;    opacity: 0.6;"><img src = img/svgstar.png height="18"></div>
-							  	<div style="float:left; color:#D9DD53; font-size: 0.6875; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;    opacity: 0.3;">Favorites</div>
+							  	<div style="float:left; color:#d0df61; font-size: 0.6875; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    -ms-flex-pack: center;    justify-content: center;    opacity: 0.3;">Favorites</div>
 							</div>
 				  		</div>
 					</div>
@@ -132,7 +132,7 @@
 					</ion-content>
 					<div id="verifierContainer" style="height: 100%;">
 						<ion-scroll on-scroll="shouldClosePopover(event)"  ng-if="bool" class = "verifier fade" scrollbar-x="false" style="width:252px; height: auto; margin-left:auto; margin-right:auto" zooming="true" direction="x" has-bouncing="false" overflow-scroll="false">
-			  					<div style="width: -webkit-max-content; width: max-content; height: max-content;height: -webkit-max-content;">
+			  					<div style="width: 95%; height: max-content;height: -webkit-max-content; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-justify-content: center;    justify-content: center; ">
 							  		<div class = "validateurWrapper muogleVerifier" ng-repeat = "verifier in info.verifiers" ng-click="openPopover($event, verifier)"  style = "background-image: url('{{verifier.icon}}');" ng-class ="{'opacityNot':activeValidator.state == verifier.id}"></div>
 								</div>
 						</ion-scroll>

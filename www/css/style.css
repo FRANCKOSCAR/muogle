@@ -269,9 +269,9 @@ a.button {
 
 .category-item {
     max-width: 50%;
-    font-size: 182%;
+    font-size: 1.7rem;
     font-weight: bolder;
-    margin-top: 10%;
+    margin-top: 2.5rem;
     float: left;
     width: 50%;
     padding-left: 8%;
@@ -538,8 +538,8 @@ input[type="text"] {
 .Content .active {
     float: left;
     border-bottom: 0.15625em;
-    border-bottom-color: #D9DD53;
-    color: #D9DD53;
+    border-bottom-color: #d0df61;
+    color: #d0df61;
     border-bottom-style: solid;
 }
 
@@ -548,7 +548,7 @@ input[type="text"] {
 }
 
 .bar-header {
-    background: #CADA56;
+    background: #d0df61;
     z-index: 20;
     display: flex;
     display: -webkit-flex;
@@ -589,17 +589,17 @@ input[type="text"] {
     width: 100%;
     height: 76%;
     overflow: hidden;
-    margin-top: 37%;
+    top: 22.5%;
     background-size: cover;
     border-radius: 1.5625em;
- /*   margin-left: 1.25em;
-    margin-right: 1.25em;*/
     position: absolute;
     z-index: 10;
-    display: -ms-flexbox;      /* TWEENER - IE 10 */
-    display: -webkit-flex;     /* NEW - Chrome */
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
-    -webkit-align-items: center; -ms-flex-align: center; align-items: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 
@@ -663,7 +663,7 @@ input[type="text"] {
 
 
 .slideValider {
-    background-color: #D9DD53;
+    background-color: #d0df61;
     width: 54px;
     height: 54px;
     border-radius: 5.0625em;
@@ -689,12 +689,12 @@ input[type="text"] {
 }
 
 .slideValider img {
-    height: 26.25px;
+    height: auto;
     width: 26.25px;
 }
 
 .slideValiderGray img {
-    height: 26.25px;
+    height: auto;
     width: 26.25px;
 }
 
@@ -727,13 +727,14 @@ input[type="text"] {
 
 
 .verifier .scroll{
-    height: 56px;
-    width: max-content;
-    width: -webkit-max-content;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
 
 .muogleVerifier {
-    float: left;
     display: inline-block;
     width: 56px;
     height: 56px;
@@ -742,7 +743,7 @@ input[type="text"] {
     padding-right: 0.3125em;
     border: 0.1875em;
     border-style: solid;
-    border-color: #D9DD53;
+    border-color: #d0df61;
     color: #5B5B5B;
     border-radius: 50%;
     background-repeat: no repeat;
@@ -780,7 +781,7 @@ input[type="text"] {
     opacity: 1;
     border-radius: 2.1875em !important;
     border-style: solid;
-    border-color: #CADA56;
+    border-color: #d0df61;
     height: inherit !important;
     visibility: 'hidden';
     width: inherit !important;
@@ -788,11 +789,6 @@ input[type="text"] {
     margin-top: -109.984px !important;
 
     /*margin-top: -110px;*/
-}
-
-
-.validateurWrapper {
-    float: left;
 }
 
 .popover-arrow {
@@ -819,7 +815,7 @@ ion-scroll < .validateurWrapper {
 
 .category .bar-header {
     background: #5B5B5B;
-    border-bottom: 1px solid #CADA56;
+    border-bottom: 1px solid #d0df61;
     display: flex;
     display: -webkit-flex;
     -webkit-justify-content: center;

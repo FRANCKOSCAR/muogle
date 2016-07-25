@@ -4,7 +4,7 @@ services.factory('Quotes', function($http){
 
   return {
     getQuotes: function(){
-      return $http.get("http://muogle.sandbox.thinklabserver.com/api/web/quotes").success(function(response){
+      return $http.get("http://muogleadmin.rp6uyk5n6t.us-west-2.elasticbeanstalk.com/api/web/quotes").success(function(response){
         return response;
       }, function errorCallback(response) {
         quoteErr = response;
@@ -28,7 +28,7 @@ services.factory('Categories', function($http){
 
   return {
     getCategories: function(){
-      return $http.get("http://muogle.sandbox.thinklabserver.com/api/web/categories").success(function(response){
+      return $http.get("http://muogleadmin.rp6uyk5n6t.us-west-2.elasticbeanstalk.com/api/web/categories").success(function(response){
         return response;
       }, function errorCallback(response) {
         quoteErr = response;

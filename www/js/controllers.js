@@ -36,7 +36,6 @@ $scope.$watch('card.tag', function (newValue, oldValue) {
 });
 
 $scope.favoriteViewer = function(id) {
-  console.log(id);
   $scope.card.category = null;
   $scope.card.id = id;
   $scope.searchEmpty = $scope.card.id;
@@ -54,7 +53,6 @@ $scope.categoryViewer = function(category) {
   $scope.card.all = false;
   $scope.filterFacts();
   if($scope.slider ) {
-    console.log($scope.slider);
     $location.path("/content");
     // $scope.slider.slideTo(0);
     setCurrentFavorite(0);
@@ -108,7 +106,6 @@ $scope.setCard = function (card){
   $scope.active.state = "All";
   $scope.searchEmpty = "notNull";
   $scope.filterFacts();
-  console.log($ionicScrollDelegate.$getByHandle('categoryScroll'));
 }
 
 $scope.searchTag = function(){
@@ -122,19 +119,15 @@ $scope.searchTag = function(){
     item.tags.forEach(function(element, indexEl){
     if ($scope.card.tag === element){
       $scope.searchEmpty = "notNull";
-      console.log("notNull");
     }
     });
   });
-  console.log($scope.card.tag);
   $scope.card.category=null;
   $scope.card.id=null;
   $scope.card.all = false;
   $scope.active.state = "null";
   $scope.filterFacts();
   if ( $scope.slider && $scope.searchEmpty!=null){
-    console.log($scope.facts);
-    console.log($scope.slider);
     $location.path("/content");
     setCurrentFavorite($scope.slider.activeIndex);
   } else {
@@ -156,12 +149,6 @@ $scope.searchTag = function(){
             }
           }
         });
-        // StorageService.addQuotes(quotes);
-        console.log($scope.fact);
-        console.log($scope.subCategory);
-      } else {
-        // $scope.category =  StorageService.getQuotes;
-        console.log("local "+$scope.fact);
       }
     });
   }
@@ -171,9 +158,6 @@ $scope.searchTag = function(){
     Categories.getCategories().then(function(categories){
       if (categories !== false){
         $scope.category = categories.data;
-        console.log($scope.category);
-      } else {
-        console.log("local "+$scope.category);
       }
     });
   }
@@ -186,7 +170,6 @@ $scope.searchTag = function(){
         filterValue = $scope.card;
     if (filterValue.all === false){
       if(filterValue.category !== undefined && filterValue.category !== null) {
-      console.log("all fitering");
         var output = [];
         angular.forEach(inputs, function (input) {
           if (input.category !== null){
@@ -198,17 +181,14 @@ $scope.searchTag = function(){
         $scope.facts = output;
       } else {
         if(filterValue.id !== undefined && filterValue.id !== null) {
-      console.log("id fitering");
         var output = [];
         angular.forEach(inputs, function (input) {
-          console.log(input);
           if (input.id === filterValue.id){
             output.push(input);
           }
          });
         $scope.facts = output;
         } else if(filterValue.tag !== undefined && filterValue.tag !== null){
-      console.log("tag fitering");
           var output = [];
           angular.forEach(inputs, function (input) {
             angular.forEach(input.tags, function (tag) {
@@ -263,7 +243,6 @@ $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
 $scope.datta = [];
 
 $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-  console.log('Slide change is beginning');
 });
 
 $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
@@ -279,13 +258,10 @@ $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
   $scope.slideEnable = true;
   $scope.slideUp = function($event, info) {
       $scope.info = info;
-      console.log($event);
-      console.log($scope);
       $scope.slideValiderGrayValue = !$scope.slideValiderGrayValue;
       $scope.slidePosition = !$scope.slidePosition;
       $scope.slideEnable = !$scope.slideEnable;
       $scope.bool = !$scope.bool;
-      console.log($scope.bool);
       if ($scope.slideEnable === false){
         $scope.slider.lockSwipes();
       } else {
@@ -305,7 +281,6 @@ $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
 $ionicPopover.fromTemplateUrl('popover.html', {
   scope: $scope
 }).then(function(popover) {
-  console.log(popover);
   $scope.popover = popover;
   $scope.popover.item = {};
 });
@@ -328,12 +303,8 @@ function offset(elm) {
 
 $scope.openPopover = function($event, item) {
   var $verifiers = angular.element(document.getElementsByClassName('verifier'));
-
-  console.log($scope.popover);
   $scope.popover.item = item;
   var popoverWrapper = document.getElementsByClassName('popover-wrapper');
-  console.log(popoverWrapper[0]);
-
   if ($scope.popover.isShown) {
     if ($verifiers[0].parentNode.id !== "verifierContainer"){
       $scope.popover.show($event); 
@@ -344,7 +315,6 @@ $scope.openPopover = function($event, item) {
     }
   }
 
-  console.log($scope.popover);
   var position = offset($event.toElement),
       popoverPosition = offset($scope.popover.modalEl);
   if(popoverPosition.top > position.top) {
@@ -357,7 +327,6 @@ $scope.openPopover = function($event, item) {
   angular.element(muogle).addClass("opacity");
 
   $scope.activeValidator.state = item.id;
-  console.log(item.id);
   angular.element($scope.popover.modalEl).css({
     visibility: 'visible'
   });
@@ -382,7 +351,6 @@ $scope.resetState = function () {
 
 $scope.shouldClosePopover = function(event){
   var distance = $scope.verifierScrollLeft - event.detail.scrollLeft;
-  console.log("Distance between verifer and scroll position is: "+distance);
   if (distance != 0){
     $scope.closePopover();
   }
@@ -393,7 +361,6 @@ $scope.shouldClosePopover = function(event){
 $scope.closePopover = function() {
   if ($scope.popover.isShown){
     $scope.popover.hide();
-    console.log("closePopover");
   }
 };
 
@@ -478,7 +445,6 @@ $scope.shareNative = function(content) {
 ////////////////////////////Local Storage////////////////////////////////////
 $scope.favorite = StorageService.getAll();
   $scope.add = function (newFavorite) {    
-    console.log('adding favorite')
     setCurrentFavorite($scope.slider.activeIndex);
     if ($scope.favorite.indexOf($scope.info.id) === -1){
       StorageService.add($scope.info.id);
@@ -489,7 +455,6 @@ $scope.favorite = StorageService.getAll();
     if (favorite){
       StorageService.remove(favorite.id);
     }
-    console.log("removing favorite");
     setCurrentFavorite($scope.slider.activeIndex);
     if ($scope.favorite.indexOf($scope.info.id) !== -1){
       StorageService.remove($scope.info.id);
@@ -509,9 +474,7 @@ $scope.highlight = function(fact) {
 
 
 $scope.randomFct = function() {
-  console.log($scope.fact.data);
   $scope.random = $scope.fact.data.items[Math.floor(Math.random()*$scope.fact.data.items.length)];
-  console.log($scope.random);
   $location.path("/random");
 };
 ////////////////////////////Random Page////////////////////////////////////
@@ -532,16 +495,12 @@ function setCurrentFavorite(index){
   if ($scope.info){
     $scope.info.isFavorited = $scope.favorite.indexOf($scope.info.id) !== -1;
     $scope.isFavorited = $scope.info.isFavorited;
-    console.log($scope.isFavorited);
   }
 }
 
 $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-  console.log($scope.slider);
-  console.log(data);
   setCurrentFavorite(data.slider.activeIndex);
   $scope.$apply();
-  console.log($scope.isFavorited);
 });
 
 

@@ -3,17 +3,19 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../Muogle/gen" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../Muogle/gen" />
-        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../Muogle/AndroidManifest.xml" />
-        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../Muogle/res" />
-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../Muogle/assets" />
-        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../Muogle/libs" />
-        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../Muogle/proguard_logs" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../platforms/android/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../paltforms/android/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../paltforms/android/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../paltforms/android/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../proguard_logs" />
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/platforms/android/build/outputs/apk" />
+    <output-test url="file://$MODULE_DIR$/platforms/android/build/outputs/apk" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />

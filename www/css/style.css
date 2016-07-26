@@ -275,6 +275,7 @@ a.button {
     float: left;
     width: 50%;
     padding-left: 8%;
+    letter-spacing: -1px;
 }
 
 .categoryNotActive{

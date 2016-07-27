@@ -508,13 +508,23 @@ $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
 
 ////////////////////////////keyboard////////////////////////////////////
 
-window.addEventListener('native.keyboardshow', function(){
+
+console.log(angular.element(document.getElementsByClassName("homeInput")));
+angular.element(document.getElementsByClassName("homeInput")).addEventListener("click", function(){
   angular.element(document.querySelector("#footer")).addClass("fiftypercent");
 });
 
-window.addEventListener('native.keyboardhide', function(){
+angular.element(document.getElementsByClassName("homeInput")).addEventListener("leave", function(){
   angular.element(document.querySelector("#footer")).removeClass("fiftypercent");
 });
+
+// window.addEventListener('native.keyboardshow', function(){
+//   angular.element(document.querySelector("#footer")).addClass("fiftypercent");
+// });
+
+// window.addEventListener('native.keyboardhide', function(){
+//   angular.element(document.querySelector("#footer")).removeClass("fiftypercent");
+// });
 
 ////////////////////////////Keyboard////////////////////////////////////
 
